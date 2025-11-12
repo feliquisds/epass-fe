@@ -11,37 +11,37 @@ import Recovery from "../screens/Recovery"
 const Stack = createStackNavigator()
 
 export default () => {
-  const theme = useColorScheme()
+    const theme = useColorScheme()
 
-  return (
-  <SafeAreaProvider>
-    <SafeAreaView style={styles().safe_area}>
-      <StatusBar barStyle={theme == 'dark' ? 'light-content' : 'dark-content'}/>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login">
-          <Stack.Screen
-            name="Login"
-            component={Login}
-            options={{
-              headerShown: false
-            }}/>
-          <Stack.Screen
-            name="Recovery"
-            component={Recovery}
-            options={{
-              headerShown: false,
-              animation: 'slide_from_right'
-            }}/>
-          <Stack.Screen
-            name="Summary"
-            component={Summary}
-            options={{
-              headerShown: false,
-              animation: 'slide_from_bottom'
-            }}/>
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaView>
-  </SafeAreaProvider>
-  )
+    return (
+        <SafeAreaProvider>
+            <SafeAreaView style={styles().safe_area}>
+                <StatusBar barStyle={theme == 'dark' ? 'light-content' : 'dark-content'} />
+                <NavigationContainer>
+                    <Stack.Navigator initialRouteName="Login">
+                        <Stack.Screen
+                            name="Login"
+                            component={Login}
+                            options={{
+                                headerShown: false
+                            }} />
+                        <Stack.Screen
+                            name="Recovery"
+                            component={Recovery}
+                            options={{
+                                headerShown: false,
+                                animation: 'slide_from_right'
+                            }} />
+                        <Stack.Screen
+                            name="Summary"
+                            component={Summary}
+                            options={{
+                                headerShown: false,
+                                animation: 'slide_from_bottom'
+                            }} />
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </SafeAreaView>
+        </SafeAreaProvider>
+    )
 }
