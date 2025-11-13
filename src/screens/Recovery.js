@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { Text, View, Pressable, ScrollView, ActivityIndicator, TextInput } from 'react-native';
-import BackButton from '../components/BackButton'
-
-import styles from "../styles/Generic";
+import { BackButton } from '../components/Buttons'
+import styles from "../styles/Styles";
 
 function timeout(delay) {
     return new Promise(res => setTimeout(res, delay));

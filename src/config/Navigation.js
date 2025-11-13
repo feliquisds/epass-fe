@@ -1,8 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
-import styles from "../styles/Generic";
 import { StatusBar, useColorScheme } from 'react-native'
+import styles from "../styles/Styles";
 
 import Login from '../screens/Login'
 import Summary from "../screens/Summary"

@@ -1,14 +1,16 @@
 import { useState } from 'react'
-
-import { Text, View, TextInput, Image, Pressable, ActivityIndicator, ScrollView, useColorScheme } from 'react-native';
-
-import styles from "../styles/Generic";
+import { View, Image, ActivityIndicator } from 'react-native';
+import { Title } from '../components/Texts';
+import { Card, CardElement } from '../components/Cards';
+import { BigSimpleButton, SmallSimpleButton } from '../components/Buttons';
+import { Divider, GradientScreen, Input } from '../components/Interface';
+import styles from "../styles/Styles";
 
 function timeout(delay) {
     return new Promise(res => setTimeout(res, delay));
 }
 
-async function ProcessLogin(navigation, activity, email, pass) {
+export async function ProcessLogin(navigation, activity, email, pass) {
     activity(true)
     await timeout(1000)
 
@@ -22,50 +24,53 @@ export default function Login({ navigation }) {
     const [showActivityIndicator, changeShowActivityIndicator] = useState(false)
     const [getEmail, setEmail] = useState('')
     const [getPass, setPass] = useState('')
-    const theme = useColorScheme()
 
     return (
-        <ScrollView style={styles().screen} contentContainerStyle={[styles().gap15, { height: '100%' }]}>
-            <Image style={styles().logo} source={theme == 'dark' ? require('../../assets/logo_dark.png') : require('../../assets/logo_light.png')} />
+        <GradientScreen>
+            
+            <Image style={styles().logo} source={require('../../assets/logo.png')} />
 
             <View style={styles().space_between}>
 
                 <View style={styles().gap15}>
-                    <Text style={[styles().title, styles().textHorizontalMargins]}>Acesse sua conta</Text>
+                    <Title style={{color: styles().lightColors.foreground}}>Acesse sua conta</Title>
 
-                    <View style={styles().card}>
-                        <TextInput
-                            style={[styles().card_element, styles().input]}
-                            placeholder="Email"
-                            placeholderTextColor={styles().colors.subtext}
-                            value={getEmail}
-                            onChangeText={(value) => setEmail(value)}
-                        />
-                        <View style={styles().divider} />
-                        <TextInput
-                            style={[styles().card_element, styles().input]}
-                            placeholder="Senha"
-                            placeholderTextColor={styles().colors.subtext}
-                            secureTextEntry={true}
-                            value={getPass}
-                            onChangeText={(value) => setPass(value)}
-                        />
-                    </View>
+                    <Card style={{backgroundColor: styles().lightColors.foreground}}>
+                        <CardElement>
+                            <Input
+                                style={{color: styles().lightColors.text}}
+                                placeholder="Email"
+                                placeholderTextColor={styles().lightColors.subtext}
+                                value={getEmail}
+                                onChangeText={(value) => setEmail(value)}
+                            />
+                        </CardElement>
 
-                    <Pressable style={[styles().smallButton, styles().textHorizontalMargins]} onPress={() => navigation.navigate('Recovery')}>
-                        <Text style={styles().smallButton}>Esqueci a senha</Text>
-                    </Pressable>
+                        <Divider style={{borderColor: styles().lightColors.divider}}/>
+
+                        <CardElement>
+                            <Input
+                                style={{color: styles().lightColors.text}}
+                                placeholder="Senha"
+                                placeholderTextColor={styles().lightColors.subtext}
+                                secureTextEntry={true}
+                                value={getPass}
+                                onChangeText={(value) => setPass(value)}
+                            />
+                        </CardElement>
+                    </Card>
+
+                    <SmallSimpleButton style={[styles().textHorizontalMargins, {color: styles().lightColors.foreground}]} onPress={() => navigation.navigate('Recovery')}>
+                        Esqueci a senha
+                    </SmallSimpleButton>
                 </View>
 
-                <Pressable style={styles().bigButton} onPress={() => ProcessLogin(navigation, changeShowActivityIndicator, getEmail, getPass)}>
-                    <View style={{ display: showActivityIndicator ? 'none' : 'flex' }}>
-                        <Text style={styles().bigButtonText}>Entrar</Text>
-                    </View>
-                    <ActivityIndicator color='white' style={{ display: showActivityIndicator ? 'flex' : 'none' }} />
-                </Pressable>
+                <BigSimpleButton onPress={() => ProcessLogin(navigation, changeShowActivityIndicator, getEmail, getPass)}>
+                    {showActivityIndicator ? <ActivityIndicator color={'#000'}/> : 'Entrar'}
+                </BigSimpleButton>
 
             </View>
 
-        </ScrollView>
+        </GradientScreen>
     );
 }

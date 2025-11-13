@@ -1,20 +1,9 @@
-import { StyleSheet, useColorScheme } from "react-native"
-
-const Colors = () => {
-    const theme = useColorScheme()
-    return {
-        background: theme == 'dark' ? '#000000' : '#F2F2F7',
-        text: theme == 'dark' ? '#FFFFFF' : '#000000',
-        foreground: theme == 'dark' ? '#1C1C1E' : '#FFFFFF',
-        divider: theme == 'dark' ? '#363638' : '#DFDFEC',
-        subtext: theme == 'dark' ? '#919199' : '#75758A',
-        accent: '#0091FF',
-        buttonText: '#FFFFFF'
-    }
-}
+import { StyleSheet } from "react-native"
+import { Colors, LightColors, DarkColors } from './Colors'
 
 export default function styles() {
     return StyleSheet.create({
+        // colors
         colors: {
             background: Colors().background,
             text: Colors().text,
@@ -23,6 +12,20 @@ export default function styles() {
             subtext: Colors().subtext,
             accent: Colors().accent,
             buttonText: Colors().buttonText
+        },
+        lightColors: {
+            background: LightColors.background,
+            text: LightColors.text,
+            foreground: LightColors.foreground,
+            divider: LightColors.divider,
+            subtext: LightColors.subtext
+        },
+        darkColors: {
+            background: DarkColors.background,
+            text: DarkColors.text,
+            foreground: DarkColors.foreground,
+            divider: DarkColors.divider,
+            subtext: DarkColors.subtext
         },
 
         // text
@@ -43,26 +46,13 @@ export default function styles() {
             color: Colors().subtext,
             fontSize: 14
         },
-        accentHeader: {
-            color: Colors().text,
-            fontSize: 24,
-            fontWeight: 700,
-        },
-        accentText: {
-            color: Colors().text,
-            fontSize: 16,
-            fontWeight: 700,
-        },
-        accentSubtext: {
-            color: Colors().subtext,
-            fontSize: 14,
-            fontWeight: 700,
+        accentedText: {
+            fontWeight: 700
         },
         textHorizontalMargins: {
             marginLeft: 20,
             marginRight: 20
         },
-
 
         // interface
         safe_area: {
@@ -73,18 +63,6 @@ export default function styles() {
             flex: 1,
             padding: 20,
             backgroundColor: Colors().background
-        },
-        card: {
-            padding: 0,
-            borderRadius: 30,
-            backgroundColor: Colors().foreground,
-            minHeight: 45
-        },
-        card_element: {
-            paddingTop: 20,
-            paddingBottom: 20,
-            paddingLeft: 20,
-            paddingRight: 20
         },
         input: {
             placeholderTextColor: Colors().subtext,
@@ -100,6 +78,20 @@ export default function styles() {
             borderBottomWidth: 1
         },
 
+        // cards
+        card: {
+            padding: 0,
+            borderRadius: 30,
+            backgroundColor: Colors().foreground,
+            minHeight: 45
+        },
+        card_element: {
+            paddingTop: 10,
+            paddingBottom: 10,
+            paddingLeft: 20,
+            paddingRight: 20
+        },
+
         // buttons
         smallButton: {
             color: Colors().accent,
@@ -108,9 +100,10 @@ export default function styles() {
             fontWeight: 700,
         },
         bigButton: {
-            backgroundColor: Colors().accent,
+            backgroundColor: '#FFF',
             alignSelf: 'center',
             alignItems: 'center',
+            justifyContent: 'center',
             width: 180,
             height: 50,
             borderRadius: 30,
@@ -119,21 +112,13 @@ export default function styles() {
             paddingLeft: 10,
             paddingRight: 10,
         },
-        bigButtonText: {
-            color: Colors().buttonText,
-            fontWeight: 700,
-            fontSize: 16
-        },
         slimButton: {
             backgroundColor: '#FFF',
+            alignSelf: 'center',
+            alignItems: 'center',
             justifyContent: 'center',
             height: 35,
             borderRadius: 30,
-        },
-        slimButtonText: {
-            fontWeight: 700,
-            textAlign: 'center',
-            fontSize: 16
         },
         backButton: {
             backgroundColor: Colors().foreground,

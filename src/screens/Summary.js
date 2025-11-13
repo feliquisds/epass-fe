@@ -1,8 +1,8 @@
 import { Text, View, Pressable, ScrollView, Image } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { GradientText } from 'universal-gradient-text'
-
-import styles from "../styles/Generic";
+import { SlimSimpleButton } from "../components/Buttons";
+import { GradientCard } from "../components/Cards";
+import styles from "../styles/Styles";
 
 export default function Summary({ navigation }) {
     return (
@@ -10,20 +10,16 @@ export default function Summary({ navigation }) {
 
             <Text style={[styles().title, styles().textHorizontalMargins]}>Resumo</Text>
 
-            <LinearGradient style={styles().card} colors={['#FF5B8F', '#FF9A4E']}>
-                <View style={[styles().card_element, styles().gap15]}>
+            <GradientCard gradient={styles().colors.accent} style={styles().gap15}>
 
                     <View style={[styles().centerVertical, styles().horizontal, styles().gap15]}>
                         <Image style={styles().pfp} source={require('../../assets/pfp.png')} />
                         <Text style={[styles().header, { color: '#FFF' }]}>Hoje tem aula!</Text>
                     </View>
 
-                    <Pressable style={styles().slimButton}>
-                        <GradientText style={styles().slimButtonText} colors={['#FF5B8F', '#FF9A4E']}>Liberar aluno</GradientText>
-                    </Pressable>
+                    <SlimSimpleButton>Liberar aluno</SlimSimpleButton>
 
-                </View>
-            </LinearGradient>
+            </GradientCard>
 
             <View style={styles().gap5}>
                 <Text style={[styles().subtext, styles().textHorizontalMargins]}>Eventos</Text>
