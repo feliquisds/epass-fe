@@ -1,13 +1,13 @@
 import { Pressable } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import { AccentText, GradientAccentText } from './Texts';
+import { Text, GradientText } from './Texts';
 import styles from "../styles/Styles";
 
 export const BigSimpleButton = ({ children, onPress }) => {
     return (
         <Pressable style={styles().bigButton} onPress={onPress}>
-            <GradientAccentText>{children}</GradientAccentText>
+            <GradientText accented={true}>{children}</GradientText>
         </Pressable>
     )
 }
@@ -16,7 +16,7 @@ export const BigAccentButton = ({ children, onPress }) => {
     return (
         <Pressable onPress={onPress}>
             <LinearGradient style={styles().bigButton} colors={styles().colors.accent}>
-                <AccentText style={{color: '#FFF'}}>{children}</AccentText>
+                <Text accented={true} style={{ color: '#FFF' }}>{children}</Text>
             </LinearGradient>
         </Pressable>
     )
@@ -25,7 +25,7 @@ export const BigAccentButton = ({ children, onPress }) => {
 export const SlimSimpleButton = ({ children, onPress }) => {
     return (
         <Pressable style={styles().slimButton} onPress={onPress}>
-            <GradientAccentText>{children}</GradientAccentText>
+            <GradientText accented={true}>{children}</GradientText>
         </Pressable>
     )
 }
@@ -34,7 +34,7 @@ export const SlimAccentButton = ({ children, onPress }) => {
     return (
         <Pressable onPress={onPress}>
             <LinearGradient style={styles().slimButton} colors={styles().colors.accent}>
-                <AccentText style={{color: '#FFF'}}>{children}</AccentText>
+                <Text accented={true} style={{ color: '#FFF' }}>{children}</Text>
             </LinearGradient>
         </Pressable>
     )
@@ -43,7 +43,7 @@ export const SlimAccentButton = ({ children, onPress }) => {
 export const SmallSimpleButton = ({ children, onPress, style }) => {
     return (
         <Pressable onPress={onPress}>
-            <AccentText style={style}>{children}</AccentText>
+            <Text accented={true} style={style}>{children}</Text>
         </Pressable>
     )
 }
@@ -51,7 +51,7 @@ export const SmallSimpleButton = ({ children, onPress, style }) => {
 export const SmallAccentButton = ({ children, onPress, style }) => {
     return (
         <Pressable onPress={onPress}>
-            <GradientAccentText style={style}>{children}</GradientAccentText>
+            <GradientText accented={true} style={style}>{children}</GradientText>
         </Pressable>
     )
 }

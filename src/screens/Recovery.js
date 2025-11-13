@@ -1,7 +1,10 @@
 import { useState } from 'react'
-import { Text, View, Pressable, ScrollView, ActivityIndicator, TextInput } from 'react-native';
-import { BackButton } from '../components/Buttons'
-import styles from "../styles/Styles";
+import { ActivityIndicator } from 'react-native';
+import { Divider, Input, SimpleScreen } from '../components/Interface';
+import { Header, TitleWithBackButton, Text } from '../components/Texts';
+import { Card, CardElement } from '../components/Cards';
+import { Section } from '../components/Alignments';
+import { BigAccentButton } from '../components/Buttons';
 
 function timeout(delay) {
     return new Promise(res => setTimeout(res, delay));
@@ -20,37 +23,35 @@ export default function Recovery({ navigation }) {
     const [getEmail, setEmail] = useState('')
 
     return (
-        <ScrollView style={styles().screen} contentContainerStyle={[styles().gap15, { height: '100%' }]}>
+        <SimpleScreen fill={true}>
 
-            <View style={[styles().horizontal, styles().gap10]}>
-                <BackButton navigation={navigation} />
-                <Text style={styles().title}>Recuperar acesso</Text>
-            </View>
+            <TitleWithBackButton navigation={navigation}>Recuperar acesso</TitleWithBackButton>
 
-            <View style={styles().space_between}>
-                <View style={styles().card}>
-                    <View style={[styles().card_element, styles().gap10]}>
-                        <Text style={styles().header}>Digite seu email</Text>
-                        <Text style={styles().text}>Caso seu email conste em nosso banco de dados, enviaremos um link para cadastro de uma nova senha</Text>
-                    </View>
-                    <View style={styles().divider} />
-                    <TextInput
-                        style={[styles().card_element, styles().input]}
-                        placeholder="Email"
-                        placeholderTextColor={styles().colors.subtext}
-                        value={getEmail}
-                        onChangeText={(value) => setEmail(value)}
-                    />
-                </View>
+            <Section spaceBetween={true}>
+                <Card>
+                    <Section gap={5}>
+                        <CardElement gap={10}>
+                            <Header>Digite seu email</Header>
+                            <Text>Caso seu email conste em nosso banco de dados, enviaremos um link para cadastro de uma nova senha</Text>
+                        </CardElement>
 
-                <Pressable style={styles().bigButton} onPress={() => ProcessRecovery(navigation, changeShowActivityIndicator, getEmail)}>
-                    <View style={{ display: showActivityIndicator ? 'none' : 'flex' }}>
-                        <Text style={styles().bigButtonText}>Enviar</Text>
-                    </View>
-                    <ActivityIndicator color='white' style={{ display: showActivityIndicator ? 'flex' : 'none' }} />
-                </Pressable>
-            </View>
+                        <Divider />
+                    </Section>
 
-        </ScrollView>
+                    <CardElement>
+                        <Input
+                            placeholder="Email"
+                            value={getEmail}
+                            onChangeText={(value) => setEmail(value)}
+                        />
+                    </CardElement>
+                </Card>
+
+                <BigAccentButton onPress={() => ProcessRecovery(navigation, changeShowActivityIndicator, getEmail)}>
+                    {showActivityIndicator ? <ActivityIndicator color={'#000'} /> : 'Entrar'}
+                </BigAccentButton>
+            </Section>
+
+        </SimpleScreen>
     );
 }

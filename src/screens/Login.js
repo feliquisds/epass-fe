@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { View, Image, ActivityIndicator } from 'react-native';
+import { Image, ActivityIndicator, StyleSheet } from 'react-native';
 import { Title } from '../components/Texts';
 import { Card, CardElement } from '../components/Cards';
 import { BigSimpleButton, SmallSimpleButton } from '../components/Buttons';
 import { Divider, GradientScreen, Input } from '../components/Interface';
+import { Section } from '../components/Alignments';
 import styles from "../styles/Styles";
 
 function timeout(delay) {
@@ -26,19 +27,17 @@ export default function Login({ navigation }) {
     const [getPass, setPass] = useState('')
 
     return (
-        <GradientScreen>
-            
-            <Image style={styles().logo} source={require('../../assets/logo.png')} />
+        <GradientScreen fill={true}>
+            <Image style={loginStyle.logo} source={require('../../assets/logo.png')} />
 
-            <View style={styles().space_between}>
+            <Section spaceBetween={true}>
+                <Section gap={15}>
+                    <Title style={{ color: styles().lightColors.foreground }}>Acesse sua conta</Title>
 
-                <View style={styles().gap15}>
-                    <Title style={{color: styles().lightColors.foreground}}>Acesse sua conta</Title>
-
-                    <Card style={{backgroundColor: styles().lightColors.foreground}}>
+                    <Card style={{ backgroundColor: styles().lightColors.foreground }}>
                         <CardElement>
                             <Input
-                                style={{color: styles().lightColors.text}}
+                                style={{ color: styles().lightColors.text }}
                                 placeholder="Email"
                                 placeholderTextColor={styles().lightColors.subtext}
                                 value={getEmail}
@@ -46,11 +45,11 @@ export default function Login({ navigation }) {
                             />
                         </CardElement>
 
-                        <Divider style={{borderColor: styles().lightColors.divider}}/>
+                        <Divider style={{ borderColor: styles().lightColors.divider }} />
 
                         <CardElement>
                             <Input
-                                style={{color: styles().lightColors.text}}
+                                style={{ color: styles().lightColors.text }}
                                 placeholder="Senha"
                                 placeholderTextColor={styles().lightColors.subtext}
                                 secureTextEntry={true}
@@ -60,17 +59,27 @@ export default function Login({ navigation }) {
                         </CardElement>
                     </Card>
 
-                    <SmallSimpleButton style={[styles().textHorizontalMargins, {color: styles().lightColors.foreground}]} onPress={() => navigation.navigate('Recovery')}>
+                    <SmallSimpleButton style={[styles().textHorizontalMargins, { color: styles().lightColors.foreground }]} onPress={() => navigation.navigate('Recovery')}>
                         Esqueci a senha
                     </SmallSimpleButton>
-                </View>
+                </Section>
 
                 <BigSimpleButton onPress={() => ProcessLogin(navigation, changeShowActivityIndicator, getEmail, getPass)}>
-                    {showActivityIndicator ? <ActivityIndicator color={'#000'}/> : 'Entrar'}
+                    {showActivityIndicator ? <ActivityIndicator color={'#000'} /> : 'Entrar'}
                 </BigSimpleButton>
 
-            </View>
-
+            </Section>
         </GradientScreen>
     );
 }
+
+const loginStyle = StyleSheet.create({
+    logo: {
+        marginTop: 25,
+        marginBottom: 35,
+        alignSelf: 'center',
+        height: 225,
+        width: '100%',
+        resizeMode: 'contain'
+    }
+})

@@ -1,28 +1,29 @@
 import { View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Subtext } from './Texts';
+import { getGap } from './Alignments';
 import styles from "../styles/Styles";
 
-export const Card = ({ children, style }) => {
+export const Card = ({ children, style, gap }) => {
     return (
-        <View style={[styles().card, style]}>
+        <View style={[styles().card, style, getGap(gap)]}>
             {children}
         </View>
     )
 }
 
-export const GradientCard = ({ children, style, gradient }) => {
+export const GradientCard = ({ children, style, gradient, gap }) => {
     return (
-        <LinearGradient style={[styles().card, style]} colors={gradient}>
+        <LinearGradient style={[styles().card, style, getGap(gap)]} colors={gradient}>
             {children}
         </LinearGradient>
     )
 }
 
-export const SubtitleCard = ({ children, style, subtitle, subtitleStyle }) => {
+export const SubtitleCard = ({ children, style, subtitle, subtitleStyle, gap }) => {
     return (
         <View style={styles().gap5}>
-            <Subtext style={[styles().textHorizontalMargins, subtitleStyle]}>{subtitle}</Subtext>
+            <Subtext style={[styles().textHorizontalMargins, subtitleStyle, getGap(gap)]}>{subtitle}</Subtext>
             <View style={[styles().card, style]}>
                 {children}
             </View>
@@ -30,9 +31,9 @@ export const SubtitleCard = ({ children, style, subtitle, subtitleStyle }) => {
     )
 }
 
-export const CardElement = ({ children, style }) => {
+export const CardElement = ({ children, style, gap }) => {
     return (
-        <View style={[styles().card_element, style]}>
+        <View style={[styles().card_element, style, getGap(gap)]}>
             {children}
         </View>
     )

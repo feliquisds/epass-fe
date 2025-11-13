@@ -1,6 +1,11 @@
 import { StyleSheet } from "react-native"
 import { Colors, LightColors, DarkColors } from './Colors'
 
+const variables = {
+    screenMargin: 20,
+    itemPadding: 17.5
+}
+
 export default function styles() {
     return StyleSheet.create({
         // colors
@@ -50,8 +55,8 @@ export default function styles() {
             fontWeight: 700
         },
         textHorizontalMargins: {
-            marginLeft: 20,
-            marginRight: 20
+            marginLeft: variables.screenMargin,
+            marginRight: variables.screenMargin
         },
 
         // interface
@@ -72,8 +77,8 @@ export default function styles() {
         divider: {
             marginTop: 0,
             marginBottom: 0,
-            marginLeft: 20,
-            marginRight: 20,
+            marginLeft: variables.itemPadding,
+            marginRight: variables.itemPadding,
             borderColor: Colors().divider,
             borderBottomWidth: 1
         },
@@ -86,10 +91,10 @@ export default function styles() {
             minHeight: 45
         },
         card_element: {
-            paddingTop: 10,
-            paddingBottom: 10,
-            paddingLeft: 20,
-            paddingRight: 20
+            paddingTop: variables.itemPadding,
+            paddingBottom: variables.itemPadding,
+            paddingLeft: variables.itemPadding,
+            paddingRight: variables.itemPadding
         },
 
         // buttons
@@ -114,7 +119,6 @@ export default function styles() {
         },
         slimButton: {
             backgroundColor: '#FFF',
-            alignSelf: 'center',
             alignItems: 'center',
             justifyContent: 'center',
             height: 35,
@@ -135,15 +139,6 @@ export default function styles() {
         },
 
         // alignment
-        gap15: {
-            gap: 15
-        },
-        gap10: {
-            gap: 10
-        },
-        gap5: {
-            gap: 5
-        },
         scrollPadding: {
             paddingBottom: 40
         },
@@ -158,23 +153,8 @@ export default function styles() {
             alignItems: 'center'
         },
         alignRight: {
-            alignItems: 'end',
+            alignItems: 'flex-end',
             alignSelf: 'flex-end'
         },
-
-        // extras
-        logo: {
-            marginTop: 25,
-            marginBottom: 35,
-            alignSelf: 'center',
-            height: 225,
-            width: '100%',
-            resizeMode: 'contain'
-        },
-        pfp: {
-            height: 70,
-            width: 70,
-            resizeMode: 'contain'
-        }
     })
 }
