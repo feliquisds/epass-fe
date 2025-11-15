@@ -1,29 +1,30 @@
 import { ScrollView, TextInput, View } from "react-native"
 import { LinearGradient } from "expo-linear-gradient"
 import { getGap } from "./Alignments"
-import styles from "../styles/Styles"
+import globalStyles from "../styles/Styles"
 
-export const SimpleScreen = ({ children, style, containerStyle, fill, scrollPadding }) => {
+export const SimpleScreen = ({ children, style, containerStyle, fill, scrollPadding, tabScreen }) => {
     return (
-        <ScrollView style={[styles().screen, style]} contentContainerStyle={[
+        <ScrollView style={[globalStyles().screen, style]} contentContainerStyle={[
             getGap(15),
             containerStyle,
             fill ? { height: '100%' } : {},
-            scrollPadding ? styles().scrollPadding : {}
+            scrollPadding ? globalStyles().scrollPadding : {},
+            tabScreen ? globalStyles().tabScreenPadding : {}
         ]}>
             {children}
         </ScrollView>
     )
 }
 
-export const GradientScreen = ({ children, gradient = styles().colors.accent, style, containerStyle, fill, scrollPadding }) => {
+export const GradientScreen = ({ children, gradient = globalStyles().colors.accent, style, containerStyle, fill, scrollPadding }) => {
     return (
-        <LinearGradient style={[styles().screen, style]} colors={gradient}>
+        <LinearGradient style={[globalStyles().screen, style]} colors={gradient}>
             <ScrollView contentContainerStyle={[
                 getGap(15),
                 containerStyle,
                 fill ? { height: '100%' } : {},
-                scrollPadding ? styles().scrollPadding : {}
+                scrollPadding ? globalStyles().scrollPadding : {}
             ]}>
                 {children}
             </ScrollView>
@@ -31,10 +32,10 @@ export const GradientScreen = ({ children, gradient = styles().colors.accent, st
     )
 }
 
-export const Input = ({ style, placeholder, placeholderTextColor = styles().colors.subtext, value, onChangeText, secureTextEntry }) => {
+export const Input = ({ style, placeholder, placeholderTextColor = globalStyles().colors.subtext, value, onChangeText, secureTextEntry }) => {
     return (
         <TextInput
-            style={[styles().input, style]}
+            style={[globalStyles().input, style]}
             placeholder={placeholder}
             placeholderTextColor={placeholderTextColor}
             secureTextEntry={secureTextEntry}
@@ -46,6 +47,6 @@ export const Input = ({ style, placeholder, placeholderTextColor = styles().colo
 
 export const Divider = ({ style }) => {
     return (
-        <View style={[styles().divider, style]} />
+        <View style={[globalStyles().divider, style]} />
     )
 }

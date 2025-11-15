@@ -1,86 +1,86 @@
 import { StyleSheet } from "react-native"
-import { Colors, LightColors, DarkColors } from './Colors'
+import { colors, lightColors, darkColors } from './Colors'
 
-export const variables = {
+export const globalStyleVariables = {
     screenMargin: 20,
     itemPadding: 17.5,
     accentWeight: 700
 }
 
-export default function styles() {
+export default () => {
     return StyleSheet.create({
         // colors
         colors: {
-            background: Colors().background,
-            text: Colors().text,
-            foreground: Colors().foreground,
-            divider: Colors().divider,
-            subtext: Colors().subtext,
-            accent: Colors().accent,
-            buttonText: Colors().buttonText
+            background: colors().background,
+            text: colors().text,
+            foreground: colors().foreground,
+            divider: colors().divider,
+            subtext: colors().subtext,
+            accent: colors().accent,
+            buttonText: colors().buttonText
         },
         lightColors: {
-            background: LightColors.background,
-            text: LightColors.text,
-            foreground: LightColors.foreground,
-            divider: LightColors.divider,
-            subtext: LightColors.subtext
+            background: lightColors.background,
+            text: lightColors.text,
+            foreground: lightColors.foreground,
+            divider: lightColors.divider,
+            subtext: lightColors.subtext
         },
         darkColors: {
-            background: DarkColors.background,
-            text: DarkColors.text,
-            foreground: DarkColors.foreground,
-            divider: DarkColors.divider,
-            subtext: DarkColors.subtext
+            background: darkColors.background,
+            text: darkColors.text,
+            foreground: darkColors.foreground,
+            divider: darkColors.divider,
+            subtext: darkColors.subtext
         },
 
         // text
         title: {
-            color: Colors().text,
+            color: colors().text,
             fontSize: 30,
             fontWeight: 700,
         },
         header: {
-            color: Colors().text,
+            color: colors().text,
             fontSize: 24,
         },
         text: {
-            color: Colors().text,
+            color: colors().text,
             fontSize: 16
         },
         subtext: {
-            color: Colors().subtext,
+            color: colors().subtext,
             fontSize: 14
         },
         accentedText: {
-            fontWeight: variables.accentWeight
+            fontWeight: globalStyleVariables.accentWeight
         },
         textHorizontalMargins: {
-            marginLeft: variables.screenMargin,
-            marginRight: variables.screenMargin
+            marginLeft: globalStyleVariables.screenMargin,
+            marginRight: globalStyleVariables.screenMargin
         },
 
         // interface
         safe_area: {
             flex: 1,
-            backgroundColor: Colors().background
+            backgroundColor: colors().background
         },
         screen: {
             flex: 1,
             padding: 20,
-            backgroundColor: Colors().background
+            backgroundColor: colors().background
         },
         input: {
-            placeholderTextColor: Colors().subtext,
-            color: Colors().text,
+            placeholderTextColor: colors().subtext,
+            color: colors().text,
             fontSize: 16
         },
         divider: {
             marginTop: 0,
             marginBottom: 0,
-            marginLeft: variables.itemPadding,
-            marginRight: variables.itemPadding,
-            borderColor: Colors().divider,
+            marginLeft: globalStyleVariables.itemPadding,
+            marginRight: globalStyleVariables.itemPadding,
+            borderColor: colors().divider,
             borderBottomWidth: 1
         },
 
@@ -88,19 +88,19 @@ export default function styles() {
         card: {
             padding: 0,
             borderRadius: 30,
-            backgroundColor: Colors().foreground,
+            backgroundColor: colors().foreground,
             minHeight: 45
         },
         card_element: {
-            paddingTop: variables.itemPadding,
-            paddingBottom: variables.itemPadding,
-            paddingLeft: variables.itemPadding,
-            paddingRight: variables.itemPadding
+            paddingTop: globalStyleVariables.itemPadding,
+            paddingBottom: globalStyleVariables.itemPadding,
+            paddingLeft: globalStyleVariables.itemPadding,
+            paddingRight: globalStyleVariables.itemPadding
         },
 
         // buttons
         smallButton: {
-            color: Colors().accent,
+            color: colors().accent,
             alignSelf: 'flex-start',
             fontSize: 16,
             fontWeight: 700,
@@ -126,7 +126,7 @@ export default function styles() {
             borderRadius: 30,
         },
         backButton: {
-            backgroundColor: Colors().foreground,
+            backgroundColor: colors().foreground,
             width: 40,
             height: 40,
             borderRadius: 100,
@@ -135,13 +135,16 @@ export default function styles() {
             paddingTop: 11
         },
         backButtonIcon: {
-            color: Colors().text,
+            color: colors().text,
             fontSize: 18
         },
 
         // alignment
         scrollPadding: {
             paddingBottom: 40
+        },
+        tabScreenPadding: {
+            paddingBottom: 126
         },
         space_between: {
             flex: 1,

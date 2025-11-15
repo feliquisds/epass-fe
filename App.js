@@ -1,6 +1,6 @@
-import Navigation from "./src/config/Navigation"
+import Stack from "./navigators/Stack"
 export default function App() {
     return (
-        <Navigation />
+        <Stack />
     )
 }

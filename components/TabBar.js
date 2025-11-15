@@ -3,14 +3,35 @@ import { PlatformPressable } from '@react-navigation/elements';
 import { GradientSubtext } from './Texts';
 import { Section } from './Alignments';
 import { StyleSheet } from "react-native";
-import { Colors } from "../styles/Colors";
-import { variables as StyleVariables } from "../styles/Styles";
+import { colors } from "../styles/Colors";
+import { globalStyleVariables } from "../styles/Styles";
+
+function getTabBarIcon(route, focused) {
+    let icon
+
+    switch (route) {
+        case 'Resumo':
+            icon = focused ? 'home-fill' : 'home'
+            break
+        case 'Relatório':
+            icon = focused ? 'home-fill' : 'home'
+            break
+        case 'Avisos':
+            icon = focused ? 'home-fill' : 'home'
+            break
+        case 'Perfil':
+            icon = focused ? 'home-fill' : 'home'
+            break
+    }
+
+    return icon
+}
 
 export function TabBar({ state, descriptors, navigation }) {
     const { buildHref } = useLinkBuilder();
 
     return (
-        <Section horizontal={true} style={tabsStyle().tabBar}>
+        <Section horizontal={true} style={localStyle().tabBar}>
             {state.routes.map((route, index) => {
                 const { options } = descriptors[route.key];
                 const label =
@@ -42,11 +63,11 @@ export function TabBar({ state, descriptors, navigation }) {
                         accessibilityLabel={options.tabBarAccessibilityLabel}
                         testID={options.tabBarButtonTestID}
                         onPress={onPress}
-                        style={tabsStyle().tabBarEntry}
+                        style={[localStyle().tabBarEntry, isFocused ? { backgroundColor: colors().foreground } : {}]}
                     >
                         <GradientSubtext
-                            style={isFocused ? { fontWeight: StyleVariables.accentWeight } : {}}
-                            gradient={isFocused ? Colors().accent : [Colors().subtext, Colors().subtext]}
+                            style={isFocused ? { fontWeight: globalStyleVariables.accentWeight } : {}}
+                            gradient={isFocused ? colors().accent : [colors().subtext, colors().subtext]}
                         >
                             {label}
                         </GradientSubtext>
@@ -57,28 +78,26 @@ export function TabBar({ state, descriptors, navigation }) {
     );
 }
 
-function tabsStyle() {
+function localStyle() {
     return StyleSheet.create({
         tabBar: {
             height: 66,
-            bottom: 17.5,
+            bottom: globalStyleVariables.screenMargin,
+            marginHorizontal: globalStyleVariables.screenMargin,
             left: 0,
             right: 0,
-            marginHorizontal: 17.5,
-            padding: 5,
             position: 'absolute',
             borderRadius: 50,
-            elevation: 5,
             alignItems: 'center',
-            backgroundColor: Colors().background,
-            gap: 5
+            backgroundColor: colors().navigation,
+            gap: 3
         },
         tabBarEntry: {
             height: '100%',
             flex: 1,
             padding: 5,
             borderRadius: 50,
-            backgroundColor: Colors().foreground,
+            backgroundColor: colors().navigation,
             alignItems: 'center',
             justifyContent: 'center'
         }

@@ -1,20 +1,20 @@
 import { Image, StyleSheet } from 'react-native';
-import { SlimSimpleButton, SmallAccentButton } from "../../components/Buttons";
-import { CardElement, GradientCard, SubtitleCard } from "../../components/Cards";
-import { Section } from '../../components/Alignments';
-import { Header, Subtext, Text, Title } from '../../components/Texts';
-import { Divider, SimpleScreen } from '../../components/Interface';
+import { SlimSimpleButton, SmallAccentButton } from "../components/Buttons";
+import { CardElement, GradientCard, SubtitleCard } from "../components/Cards";
+import { Section } from '../components/Alignments';
+import { Header, Subtext, Text, Title } from '../components/Texts';
+import { Divider, SimpleScreen } from '../components/Interface';
 
-export default function Summary({ navigation }) {
+export default ({ navigation }) => {
     return (
-        <SimpleScreen scrollPadding={true}>
+        <SimpleScreen tabScreen={true}>
 
             <Title>Resumo</Title>
 
             <GradientCard gap={15}>
                 <CardElement gap={15}>
                     <Section horizontal={true} gap={10}>
-                        <Image style={summaryStyle.pfp} source={require('../../../assets/pfp.png')} />
+                        <Image style={localStyle.pfp} source={require('../assets/pfp.png')} />
                         <Header centerVertical={true}>Hoje tem aula!</Header>
                     </Section>
 
@@ -89,7 +89,7 @@ export default function Summary({ navigation }) {
     );
 }
 
-const summaryStyle = StyleSheet.create({
+const localStyle = StyleSheet.create({
     pfp: {
         height: 70,
         width: 70,

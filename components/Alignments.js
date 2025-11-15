@@ -1,5 +1,5 @@
 import { View } from "react-native"
-import styles from "../styles/Styles"
+import globalStyles from "../styles/Styles"
 
 export function getGap(gap) {
     if (gap == 15) return { gap: 15 }
@@ -12,10 +12,10 @@ export const Section = ({ children, gap, spaceBetween, horizontal, centerVertica
     return (
         <View style={[
             getGap(gap),
-            spaceBetween ? styles().space_between : {},
-            horizontal ? styles().horizontal : {},
-            centerVertical ? styles().centerVertical : {},
-            alignRight ? styles().alignRight : {},
+            spaceBetween ? globalStyles().space_between : {},
+            horizontal ? globalStyles().horizontal : {},
+            centerVertical ? globalStyles().centerVertical : {},
+            alignRight ? globalStyles().alignRight : {},
             style
         ]}>{children}</View>
     )

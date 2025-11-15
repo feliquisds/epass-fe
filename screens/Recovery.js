@@ -10,7 +10,7 @@ function timeout(delay) {
     return new Promise(res => setTimeout(res, delay));
 }
 
-async function ProcessRecovery(navigation, activity, email) {
+async function processRecovery(navigation, activity, email) {
     activity(true)
     await timeout(1000)
 
@@ -18,7 +18,7 @@ async function ProcessRecovery(navigation, activity, email) {
     activity(false)
 }
 
-export default function Recovery({ navigation }) {
+export default ({ navigation }) => {
     const [showActivityIndicator, changeShowActivityIndicator] = useState(false)
     const [getEmail, setEmail] = useState('')
 
@@ -47,7 +47,7 @@ export default function Recovery({ navigation }) {
                     </CardElement>
                 </Card>
 
-                <BigAccentButton onPress={() => ProcessRecovery(navigation, changeShowActivityIndicator, getEmail)}>
+                <BigAccentButton onPress={() => processRecovery(navigation, changeShowActivityIndicator, getEmail)}>
                     {showActivityIndicator ? <ActivityIndicator color={'#000'} /> : 'Entrar'}
                 </BigAccentButton>
             </Section>
