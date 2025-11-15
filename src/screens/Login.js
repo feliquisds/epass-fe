@@ -17,7 +17,7 @@ export async function ProcessLogin(navigation, activity, email, pass) {
 
     // if (email == 'admin' && pass == 'admin') navigation.navigate('Summary')
 
-    navigation.navigate('Summary')
+    navigation.navigate('Tabs')
     activity(false)
 }
 

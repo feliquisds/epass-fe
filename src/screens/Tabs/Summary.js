@@ -1,21 +1,20 @@
 import { Image, StyleSheet } from 'react-native';
-import { SlimSimpleButton, SmallAccentButton } from "../components/Buttons";
-import { CardElement, GradientCard, SubtitleCard } from "../components/Cards";
-import { Section } from '../components/Alignments';
-import { Header, Subtext, Text } from '../components/Texts';
-import { Divider, SimpleScreen } from '../components/Interface';
-import styles from "../styles/Styles";
+import { SlimSimpleButton, SmallAccentButton } from "../../components/Buttons";
+import { CardElement, GradientCard, SubtitleCard } from "../../components/Cards";
+import { Section } from '../../components/Alignments';
+import { Header, Subtext, Text, Title } from '../../components/Texts';
+import { Divider, SimpleScreen } from '../../components/Interface';
 
 export default function Summary({ navigation }) {
     return (
         <SimpleScreen scrollPadding={true}>
 
-            <Text style={[styles().title, styles().textHorizontalMargins]}>Resumo</Text>
+            <Title>Resumo</Title>
 
-            <GradientCard gradient={styles().colors.accent} style={styles().gap15}>
+            <GradientCard gap={15}>
                 <CardElement gap={15}>
                     <Section horizontal={true} gap={10}>
-                        <Image style={styles().pfp} source={require('../../assets/pfp.png')} />
+                        <Image style={summaryStyle.pfp} source={require('../../../assets/pfp.png')} />
                         <Header centerVertical={true}>Hoje tem aula!</Header>
                     </Section>
 

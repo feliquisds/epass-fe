@@ -12,7 +12,7 @@ export const Card = ({ children, style, gap }) => {
     )
 }
 
-export const GradientCard = ({ children, style, gradient, gap }) => {
+export const GradientCard = ({ children, style, gradient = styles().colors.accent, gap }) => {
     return (
         <LinearGradient style={[styles().card, style, getGap(gap)]} colors={gradient}>
             {children}

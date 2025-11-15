@@ -8,14 +8,15 @@ export function getGap(gap) {
     return {}
 }
 
-export const Section = ({ children, gap, spaceBetween, horizontal, centerVertical, alignRight }) => {
+export const Section = ({ children, gap, spaceBetween, horizontal, centerVertical, alignRight, style }) => {
     return (
         <View style={[
             getGap(gap),
             spaceBetween ? styles().space_between : {},
             horizontal ? styles().horizontal : {},
             centerVertical ? styles().centerVertical : {},
-            alignRight ? styles().alignRight : {}
+            alignRight ? styles().alignRight : {},
+            style
         ]}>{children}</View>
     )
 }

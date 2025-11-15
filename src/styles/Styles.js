@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native"
 import { Colors, LightColors, DarkColors } from './Colors'
 
-const variables = {
+export const variables = {
     screenMargin: 20,
-    itemPadding: 17.5
+    itemPadding: 17.5,
+    accentWeight: 700
 }
 
 export default function styles() {
@@ -52,7 +53,7 @@ export default function styles() {
             fontSize: 14
         },
         accentedText: {
-            fontWeight: 700
+            fontWeight: variables.accentWeight
         },
         textHorizontalMargins: {
             marginLeft: variables.screenMargin,

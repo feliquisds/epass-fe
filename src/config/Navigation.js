@@ -5,7 +5,7 @@ import { StatusBar, useColorScheme } from 'react-native'
 import styles from "../styles/Styles";
 
 import Login from '../screens/Login'
-import Summary from "../screens/Summary"
+import Tabs from "../screens/Tabs/Layout"
 import Recovery from "../screens/Recovery"
 
 const Stack = createStackNavigator()
@@ -18,25 +18,23 @@ export default () => {
             <SafeAreaView style={styles().safe_area}>
                 <StatusBar barStyle={theme == 'dark' ? 'light-content' : 'dark-content'} />
                 <NavigationContainer>
-                    <Stack.Navigator initialRouteName="Login">
+                    <Stack.Navigator initialRouteName="Login" screenOptions={{
+                        headerShown: false
+                    }}>
                         <Stack.Screen
                             name="Login"
                             component={Login}
-                            options={{
-                                headerShown: false
-                            }} />
+                        />
                         <Stack.Screen
                             name="Recovery"
                             component={Recovery}
                             options={{
-                                headerShown: false,
                                 animation: 'slide_from_right'
                             }} />
                         <Stack.Screen
-                            name="Summary"
-                            component={Summary}
+                            name="Tabs"
+                            component={Tabs}
                             options={{
-                                headerShown: false,
                                 animation: 'slide_from_bottom'
                             }} />
                     </Stack.Navigator>

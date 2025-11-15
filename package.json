@@ -12,6 +12,7 @@
         "@react-native-masked-view/masked-view": "0.3.2",
         "@react-navigation/native": "*",
         "@react-navigation/stack": "*",
+        "@react-navigation/bottom-tabs": "*",
         "expo": "~54.0.20",
         "expo-constants": "~18.0.10",
         "expo-linear-gradient": "~15.0.7",
