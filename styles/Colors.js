@@ -1,6 +1,11 @@
 import { useColorScheme } from "react-native"
 
-export const lightColors = {
+const fixedColors = {
+    accent: ['#FF5B8F', '#FF9A4E'],
+    buttonText: '#FFFFFF'
+}
+
+const lightColors = {
     background: '#F2F2F7',
     text: '#000000',
     foreground: '#FFFFFF',
@@ -8,11 +13,10 @@ export const lightColors = {
     subtext: '#75758A',
     navigation: '#FFFFFF66',
     inactive: '#ADADB5',
-    accent: ['#FF5B8F', '#FF9A4E'],
-    buttonText: '#FFFFFF'
+    ...fixedColors
 }
 
-export const darkColors = {
+const darkColors = {
     background: '#000000',
     text: '#FFFFFF',
     foreground: '#1C1C1E',
@@ -20,11 +24,10 @@ export const darkColors = {
     subtext: '#919199',
     navigation: '#1B1B1D66',
     inactive: '#777783',
-    accent: ['#FF5B8F', '#FF9A4E'],
-    buttonText: '#FFFFFF'
+    ...fixedColors
 }
 
-export const colors = (force = "") => {
+export default function (force = "") {
     if (force == "light") return lightColors
     if (force == "dark") return darkColors
     const theme = useColorScheme()
@@ -36,7 +39,6 @@ export const colors = (force = "") => {
         subtext: theme == 'dark' ? darkColors.subtext : lightColors.subtext,
         navigation: theme == 'dark' ? darkColors.navigation : lightColors.navigation,
         inactive: theme == 'dark' ? darkColors.inactive : lightColors.inactive,
-        accent: ['#FF5B8F', '#FF9A4E'],
-        buttonText: '#FFFFFF'
+        ...fixedColors
     }
 }

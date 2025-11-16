@@ -3,6 +3,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Subtext } from './Texts';
 import { getGap } from './Alignments';
 import globalStyles from "../styles/Styles";
+import colors from '../styles/Colors';
 
 export const Card = ({ children, style, gap }) => {
     return (
@@ -12,7 +13,7 @@ export const Card = ({ children, style, gap }) => {
     )
 }
 
-export const GradientCard = ({ children, style, gradient = globalStyles().colors.accent, gap }) => {
+export const GradientCard = ({ children, style, gradient = colors().accent, gap }) => {
     return (
         <LinearGradient style={[globalStyles().card, style, getGap(gap)]} colors={gradient}>
             {children}

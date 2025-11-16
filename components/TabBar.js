@@ -3,8 +3,8 @@ import { PlatformPressable } from '@react-navigation/elements';
 import { GradientSubtext } from './Texts';
 import { Section } from './Alignments';
 import { StyleSheet } from "react-native";
-import { colors } from "../styles/Colors";
 import { globalStyleVariables } from "../styles/Styles";
+import colors from "../styles/Colors";
 
 function getTabBarIcon(route, focused) {
     let icon

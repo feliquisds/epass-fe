@@ -3,6 +3,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Text, GradientText } from './Texts';
 import globalStyles from "../styles/Styles";
+import colors from '../styles/Colors';
 
 export const BigSimpleButton = ({ children, onPress }) => {
     return (
@@ -15,8 +16,8 @@ export const BigSimpleButton = ({ children, onPress }) => {
 export const BigAccentButton = ({ children, onPress }) => {
     return (
         <Pressable onPress={onPress}>
-            <LinearGradient style={globalStyles().bigButton} colors={globalStyles().colors.accent}>
-                <Text accented={true} style={{ color: '#FFF' }}>{children}</Text>
+            <LinearGradient style={globalStyles().bigButton} colors={colors().accent}>
+                <Text accented={true} style={{ color: colors().buttonText }}>{children}</Text>
             </LinearGradient>
         </Pressable>
     )
@@ -33,8 +34,8 @@ export const SlimSimpleButton = ({ children, onPress }) => {
 export const SlimAccentButton = ({ children, onPress }) => {
     return (
         <Pressable onPress={onPress}>
-            <LinearGradient style={globalStyles().slimButton} colors={globalStyles().colors.accent}>
-                <Text accented={true} style={{ color: '#FFF' }}>{children}</Text>
+            <LinearGradient style={globalStyles().slimButton} colors={colors().accent}>
+                <Text accented={true} style={{ color: colors().buttonText }}>{children}</Text>
             </LinearGradient>
         </Pressable>
     )

@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native"
-import { colors, lightColors, darkColors } from './Colors'
+import colors from './Colors'
 
 export const globalStyleVariables = {
     screenMargin: 20,
@@ -7,49 +7,24 @@ export const globalStyleVariables = {
     accentWeight: 700
 }
 
-export default () => {
+export default (force = "") => {
     return StyleSheet.create({
-        // colors
-        colors: {
-            background: colors().background,
-            text: colors().text,
-            foreground: colors().foreground,
-            divider: colors().divider,
-            subtext: colors().subtext,
-            accent: colors().accent,
-            buttonText: colors().buttonText
-        },
-        lightColors: {
-            background: lightColors.background,
-            text: lightColors.text,
-            foreground: lightColors.foreground,
-            divider: lightColors.divider,
-            subtext: lightColors.subtext
-        },
-        darkColors: {
-            background: darkColors.background,
-            text: darkColors.text,
-            foreground: darkColors.foreground,
-            divider: darkColors.divider,
-            subtext: darkColors.subtext
-        },
-
         // text
         title: {
-            color: colors().text,
+            color: colors(force).text,
             fontSize: 30,
-            fontWeight: 700,
+            fontWeight: globalStyleVariables.accentWeight,
         },
         header: {
-            color: colors().text,
+            color: colors(force).text,
             fontSize: 24,
         },
         text: {
-            color: colors().text,
+            color: colors(force).text,
             fontSize: 16
         },
         subtext: {
-            color: colors().subtext,
+            color: colors(force).subtext,
             fontSize: 14
         },
         accentedText: {
@@ -63,16 +38,16 @@ export default () => {
         // interface
         safe_area: {
             flex: 1,
-            backgroundColor: colors().background
+            backgroundColor: colors(force).background
         },
         screen: {
             flex: 1,
             padding: 20,
-            backgroundColor: colors().background
+            backgroundColor: colors(force).background
         },
         input: {
-            placeholderTextColor: colors().subtext,
-            color: colors().text,
+            placeholderTextColor: colors(force).subtext,
+            color: colors(force).text,
             fontSize: 16
         },
         divider: {
@@ -80,7 +55,7 @@ export default () => {
             marginBottom: 0,
             marginLeft: globalStyleVariables.itemPadding,
             marginRight: globalStyleVariables.itemPadding,
-            borderColor: colors().divider,
+            borderColor: colors(force).divider,
             borderBottomWidth: 1
         },
 
@@ -88,7 +63,7 @@ export default () => {
         card: {
             padding: 0,
             borderRadius: 30,
-            backgroundColor: colors().foreground,
+            backgroundColor: colors(force).foreground,
             minHeight: 45
         },
         card_element: {
@@ -100,13 +75,13 @@ export default () => {
 
         // buttons
         smallButton: {
-            color: colors().accent,
+            color: colors(force).accent,
             alignSelf: 'flex-start',
             fontSize: 16,
             fontWeight: 700,
         },
         bigButton: {
-            backgroundColor: '#FFF',
+            backgroundColor: colors(force).buttonText,
             alignSelf: 'center',
             alignItems: 'center',
             justifyContent: 'center',
@@ -119,14 +94,14 @@ export default () => {
             paddingRight: 10,
         },
         slimButton: {
-            backgroundColor: '#FFF',
+            backgroundColor: colors(force).buttonText,
             alignItems: 'center',
             justifyContent: 'center',
             height: 35,
             borderRadius: 30,
         },
         backButton: {
-            backgroundColor: colors().foreground,
+            backgroundColor: colors(force).foreground,
             width: 40,
             height: 40,
             borderRadius: 100,
@@ -135,7 +110,7 @@ export default () => {
             paddingTop: 11
         },
         backButtonIcon: {
-            color: colors().text,
+            color: colors(force).text,
             fontSize: 18
         },
 

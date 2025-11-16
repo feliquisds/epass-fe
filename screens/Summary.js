@@ -15,7 +15,7 @@ export default ({ navigation }) => {
                 <CardElement gap={15}>
                     <Section horizontal={true} gap={10}>
                         <Image style={localStyle.pfp} source={require('../assets/pfp.png')} />
-                        <Header centerVertical={true}>Hoje tem aula!</Header>
+                        <Header centerVertical={true} style={{ color: '#FFF' }}>Hoje tem aula!</Header>
                     </Section>
 
                     <SlimSimpleButton>Liberar aluno</SlimSimpleButton>

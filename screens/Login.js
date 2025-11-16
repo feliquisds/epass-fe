@@ -5,7 +5,8 @@ import { Card, CardElement } from '../components/Cards';
 import { BigSimpleButton, SmallSimpleButton } from '../components/Buttons';
 import { Divider, GradientScreen, Input } from '../components/Interface';
 import { Section } from '../components/Alignments';
-import globalStyles from "../styles/Styles";
+import { globalStyleVariables } from '../styles/Styles';
+import colors from '../styles/Colors';
 
 function timeout(delay) {
     return new Promise(res => setTimeout(res, delay));
@@ -32,26 +33,26 @@ export default ({ navigation }) => {
 
             <Section spaceBetween={true}>
                 <Section gap={15}>
-                    <Title style={{ color: globalStyles().lightColors.foreground }}>Acesse sua conta</Title>
+                    <Title style={{ color: colors('light').foreground }}>Acesse sua conta</Title>
 
-                    <Card style={{ backgroundColor: globalStyles().lightColors.foreground }}>
+                    <Card style={{ backgroundColor: colors('light').foreground }}>
                         <CardElement>
                             <Input
-                                style={{ color: globalStyles().lightColors.text }}
+                                style={{ color: colors('light').text }}
                                 placeholder="Email"
-                                placeholderTextColor={globalStyles().lightColors.subtext}
+                                placeholderTextColor={colors('light').subtext}
                                 value={getEmail}
                                 onChangeText={(value) => setEmail(value)}
                             />
                         </CardElement>
 
-                        <Divider style={{ borderColor: globalStyles().lightColors.divider }} />
+                        <Divider style={{ borderColor: colors('light').divider }} />
 
                         <CardElement>
                             <Input
-                                style={{ color: globalStyles().lightColors.text }}
+                                style={{ color: colors('light').text }}
                                 placeholder="Senha"
-                                placeholderTextColor={globalStyles().lightColors.subtext}
+                                placeholderTextColor={colors('light').subtext}
                                 secureTextEntry={true}
                                 value={getPass}
                                 onChangeText={(value) => setPass(value)}
@@ -59,13 +60,13 @@ export default ({ navigation }) => {
                         </CardElement>
                     </Card>
 
-                    <SmallSimpleButton style={[globalStyles().textHorizontalMargins, { color: globalStyles().lightColors.foreground }]} onPress={() => navigation.navigate('Recovery')}>
+                    <SmallSimpleButton style={{ color: colors('light').foreground, marginHorizontal: globalStyleVariables.screenMargin }} onPress={() => navigation.navigate('Recovery')}>
                         Esqueci a senha
                     </SmallSimpleButton>
                 </Section>
 
                 <BigSimpleButton onPress={() => processLogin(navigation, changeShowActivityIndicator, getEmail, getPass)}>
-                    {showActivityIndicator ? <ActivityIndicator color={'#000'} /> : 'Entrar'}
+                    {showActivityIndicator ? <ActivityIndicator color={colors('light').accent[0]} style={{ backgroundColor: '#FFF' }} /> : 'Entrar'}
                 </BigSimpleButton>
 
             </Section>

@@ -29,7 +29,7 @@ export default ({ navigation }) => {
 
             <Section spaceBetween={true}>
                 <Card>
-                    <Section gap={5}>
+                    <Section>
                         <CardElement gap={10}>
                             <Header>Digite seu email</Header>
                             <Text>Caso seu email conste em nosso banco de dados, enviaremos um link para cadastro de uma nova senha</Text>
@@ -48,7 +48,7 @@ export default ({ navigation }) => {
                 </Card>
 
                 <BigAccentButton onPress={() => processRecovery(navigation, changeShowActivityIndicator, getEmail)}>
-                    {showActivityIndicator ? <ActivityIndicator color={'#000'} /> : 'Entrar'}
+                    {showActivityIndicator ? <ActivityIndicator color={'#FFF'} /> : 'Entrar'}
                 </BigAccentButton>
             </Section>
 
