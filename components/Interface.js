@@ -21,7 +21,7 @@ export const SimpleScreen = ({ children, style, containerStyle, fill, scrollPadd
 
 export const ImageScreen = ({ children, style, containerStyle, fill, scrollPadding, tabScreen, source = require('../assets/background.png'), resizeMode = 'cover' }) => {
     return (
-        <ImageBackground source={source} resizeMode={resizeMode} style={globalStyles().staticArea}>
+        <ImageBackground source={source} resizeMode={resizeMode} style={[globalStyles().staticArea, { width: '100%', height: '100%' }]}>
             <ScrollView style={[globalStyles().scrollArea, style]} contentContainerStyle={[
                 getGap(15),
                 containerStyle,
