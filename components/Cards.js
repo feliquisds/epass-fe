@@ -1,15 +1,18 @@
 import { View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Subtext } from './Texts';
-import { getGap } from './Alignments';
+import { getGap, Section } from './Alignments';
 import globalStyles from "../styles/Styles";
 import colors from '../styles/Colors';
 
-export const Card = ({ children, style, gap }) => {
+export const Card = ({ children, style, subtitleStyle, gap, label }) => {
     return (
-        <View style={[globalStyles().card, style, getGap(gap)]}>
-            {children}
-        </View>
+        <Section gap={5}>
+            {label && <Subtext style={[globalStyles().textHorizontalMargins, subtitleStyle]}>{label}</Subtext>}
+            <Section style={[globalStyles().card, style]} gap={getGap(gap)}>
+                {children}
+            </Section>
+        </Section>
     )
 }
 
@@ -18,17 +21,6 @@ export const GradientCard = ({ children, style, gradient = colors().accent, gap 
         <LinearGradient style={[globalStyles().card, style, getGap(gap)]} colors={gradient}>
             {children}
         </LinearGradient>
-    )
-}
-
-export const SubtitleCard = ({ children, style, subtitle, subtitleStyle, gap }) => {
-    return (
-        <View style={globalStyles().gap5}>
-            <Subtext style={[globalStyles().textHorizontalMargins, subtitleStyle, getGap(gap)]}>{subtitle}</Subtext>
-            <View style={[globalStyles().card, style]}>
-                {children}
-            </View>
-        </View>
     )
 }
 

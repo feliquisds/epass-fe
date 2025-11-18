@@ -1,6 +1,6 @@
 import { Image, StyleSheet } from 'react-native';
 import { SlimSimpleButton, SmallAccentButton } from "../components/Buttons";
-import { CardElement, GradientCard, SubtitleCard } from "../components/Cards";
+import { Card, CardElement, GradientCard } from "../components/Cards";
 import { Section } from '../components/Alignments';
 import { Header, Subtext, Text, Title } from '../components/Texts';
 import { Divider, SimpleScreen } from '../components/Interface';
@@ -23,7 +23,7 @@ export default ({ navigation }) => {
             </GradientCard>
 
 
-            <SubtitleCard subtitle={'Eventos'}>
+            <Card label={'Eventos'}>
                 <CardElement>
                     <Section horizontal={true} spaceBetween={true} centerVertical={true}>
                         <Text>Excursão</Text>
@@ -64,9 +64,9 @@ export default ({ navigation }) => {
                     <SmallAccentButton>Verificar agenda completa</SmallAccentButton>
                 </CardElement>
 
-            </SubtitleCard>
+            </Card>
 
-            <SubtitleCard subtitle={'Crédito da pulseira'}>
+            <Card label={'Crédito da pulseira'}>
                 <CardElement>
                     <Text>Crédito disponível</Text>
                     <Text accented={true}>R$ 30,00</Text>
@@ -83,7 +83,7 @@ export default ({ navigation }) => {
                 <CardElement>
                     <SmallAccentButton>Adicionar crédito</SmallAccentButton>
                 </CardElement>
-            </SubtitleCard>
+            </Card>
 
         </SimpleScreen>
     );
