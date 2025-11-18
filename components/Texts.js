@@ -14,6 +14,7 @@ export const Title = ({ children, style }) => {
 export const TitleWithBackButton = ({ children, style, navigation }) => {
     return (
         <Section horizontal={true} gap={10}>
+            <BackButton navigation={navigation} />
             <ReactText style={[globalStyles().title, style]}>{children}</ReactText>
         </Section>
     )
