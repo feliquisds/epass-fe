@@ -1,50 +1,61 @@
-import { Title } from '../components/Texts';
-import { RoundInput, ImageScreen } from '../components/Interface';
-import { Image, StyleSheet, Alert } from 'react-native';
+import { Header, Subtext, Title } from '../components/Texts';
+import { SimpleScreen, Divider } from '../components/Interface';
+import { Image, StyleSheet } from 'react-native';
 import { Card, CardElement } from '../components/Cards';
-import { BigAccentButton } from '../components/Buttons';
+import { SmallSimpleButton } from '../components/Buttons';
+import { Section } from '../components/Alignments';
+
+function handleLogout(navigation) {
+    navigation.replace('Login');
+}
+
+function editProfile(navigation) {
+    navigation.navigate('EditProfile');
+}
 
 export default ({ navigation }) => {
-    const handlePress = () => {
-        Alert.alert('', 'Suas informações foram salvas!');
-    };
-
     return (
-        <ImageScreen tabScreen={true}>
-            <Title style={{ color: '#FFF' }}>Editar Informações</Title>
+        <SimpleScreen tabScreen={true}>
+            <Title>Perfil</Title>
 
-            <Image source={require('../assets/parentPfp.webp')} style={localStyle.profilePicture} />
-
-            <Card gap={10} style={{ paddingTop: 20 }}>
-                <CardElement gap={15}>
-                    <RoundInput label="Nome Completo:" placeholder="Alexia Martins Castro" value="Alexia Martins Castro" editable={false} />
-                    <RoundInput label="Email:" placeholder="alexia.martins@gmail.com" value="alexia.martins@gmail.com" />
+            <Card>
+                <CardElement horizontal={true} gap={15}>
+                    <Image source={require('../assets/parentPfp.webp')} style={localStyle.profilePicture} />
+                    <Section style={{ alignSelf: 'center' }}>
+                        <Header>Alexia Martins</Header>
+                        <Subtext>Responsável</Subtext>
+                    </Section>
+                </CardElement>
+                <Divider />
+                <CardElement>
+                    <SmallSimpleButton onPress={() => editProfile(navigation)}>Editar informações</SmallSimpleButton>
+                </CardElement>
+                <Divider />
+                <CardElement>
+                    <SmallSimpleButton>Solicitar documentos</SmallSimpleButton>
                 </CardElement>
             </Card>
 
-            <Card label="Informações Adicionais" gap={10}>
-                <CardElement gap={15}>
-                    <RoundInput label="CPF:" placeholder="123.456.789-09" value="123.456.789-09" editable={false} />
-                    <RoundInput label="Endereço:" placeholder="Rua A, 123 , Jardim ABC - FV/SP" value="Rua A, 123 , Jardim ABC - FV/SP" />
-                    <RoundInput label="Telefone:" placeholder="11 99999-9999" value="11 99999-9999" editable={true} />
-                    <RoundInput label="Filhos(as):" placeholder="Gabriela Martins" value="Gabriela Martins" editable={false} />
+            <Card>
+                <CardElement>
+                    <SmallSimpleButton>Acessibilidade</SmallSimpleButton>
+                </CardElement>
+                <Divider />
+                <CardElement>
+                    <SmallSimpleButton style={{ color: "#FF002F", textAlign: 'center' }} onPress={() => handleLogout(navigation)}>Sair</SmallSimpleButton>
                 </CardElement>
             </Card>
-
-            <BigAccentButton onPress={handlePress}>Salvar</BigAccentButton>
-        </ImageScreen>
+        </SimpleScreen>
     );
 };
 
 const localStyle = StyleSheet.create({
     profilePicture: {
-        alignSelf: 'center',
-        marginBottom: -45,
         zIndex: 1,
-        height: 138,
-        width: 138,
+        height: 90,
+        width: 90,
         borderRadius: 69,
         borderWidth: 5,
-        borderColor: '#fee971',
+        borderColor: '#FF5B8F',
     },
 });

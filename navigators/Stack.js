@@ -7,6 +7,7 @@ import globalStyles from "../styles/Styles";
 import Login from '../screens/Login'
 import Tabs from "./Tabs"
 import Recovery from "../screens/Recovery"
+import EditProfile from "../screens/EditProfile";
 
 const Stack = createStackNavigator()
 
@@ -36,6 +37,12 @@ export default () => {
                             component={Tabs}
                             options={{
                                 animation: 'slide_from_bottom'
+                            }} />
+                        <Stack.Screen
+                            name="EditProfile"
+                            component={EditProfile}
+                            options={{
+                                animation: 'slide_from_right'
                             }} />
                     </Stack.Navigator>
                 </NavigationContainer>

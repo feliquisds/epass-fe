@@ -24,9 +24,9 @@ export const GradientCard = ({ children, style, gradient = colors().accent, gap,
     )
 }
 
-export const CardElement = ({ children, style, gap }) => {
+export const CardElement = ({ children, style, gap, horizontal, spaceBetween, centerVertical }) => {
     return (
-        <Section style={[globalStyles().card_element, style]} gap={gap}>
+        <Section style={[globalStyles().card_element, style]} gap={gap} horizontal={horizontal} spaceBetween={spaceBetween} centerVertical={centerVertical}>
             {children}
         </Section>
     )

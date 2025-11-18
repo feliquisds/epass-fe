@@ -23,18 +23,18 @@ export const BigAccentButton = ({ children, onPress }) => {
     )
 }
 
-export const SlimSimpleButton = ({ children, onPress }) => {
+export const SlimSimpleButton = ({ children, onPress, gradient = colors().accent }) => {
     return (
         <Pressable style={globalStyles().slimButton} onPress={onPress}>
-            <GradientText accented={true}>{children}</GradientText>
+            <GradientText accented={true} gradient={gradient}>{children}</GradientText>
         </Pressable>
     )
 }
 
-export const SlimAccentButton = ({ children, onPress }) => {
+export const SlimAccentButton = ({ children, onPress, gradient = colors().accent }) => {
     return (
         <Pressable onPress={onPress}>
-            <LinearGradient style={globalStyles().slimButton} colors={colors().accent}>
+            <LinearGradient style={globalStyles().slimButton} colors={gradient}>
                 <Text accented={true} style={{ color: colors().buttonText }}>{children}</Text>
             </LinearGradient>
         </Pressable>
