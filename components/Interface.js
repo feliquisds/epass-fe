@@ -1,6 +1,7 @@
 import { ScrollView, TextInput, View } from "react-native"
 import { LinearGradient } from "expo-linear-gradient"
-import { getGap } from "./Alignments"
+import { getGap, Section } from "./Alignments"
+import { Subtext } from "./Texts"
 import globalStyles from "../styles/Styles"
 import colors from "../styles/Colors"
 
@@ -33,7 +34,7 @@ export const GradientScreen = ({ children, gradient = colors().accent, style, co
     )
 }
 
-export const Input = ({ style, placeholder, placeholderTextColor = colors().subtext, value, onChangeText, secureTextEntry }) => {
+export const Input = ({ style, placeholder, placeholderTextColor = colors().subtext, value, onChangeText, secureTextEntry, editable }) => {
     return (
         <TextInput
             style={[globalStyles().input, style]}
@@ -42,7 +43,26 @@ export const Input = ({ style, placeholder, placeholderTextColor = colors().subt
             secureTextEntry={secureTextEntry}
             value={value}
             onChangeText={onChangeText}
+            editable={editable}
         />
+    )
+}
+
+export const RoundInput = ({ style, placeholder, placeholderTextColor = colors().subtext, value, onChangeText, secureTextEntry, editable = true, label }) => {
+
+    return (
+        <Section gap={5}>
+            <Subtext>{label}</Subtext>
+            <TextInput
+                style={[globalStyles().roundInput, { color: editable ? colors().text : colors().subtext }, style]}
+                placeholder={placeholder}
+                placeholderTextColor={placeholderTextColor}
+                secureTextEntry={secureTextEntry}
+                value={value}
+                onChangeText={onChangeText}
+                editable={editable}
+            />
+        </Section>
     )
 }
 

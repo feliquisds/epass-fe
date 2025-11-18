@@ -50,6 +50,14 @@ export default (force = "") => {
             color: colors(force).text,
             fontSize: 16
         },
+        roundInput: {
+            fontSize: 16,
+            borderColor: colors(force).divider,
+            borderWidth: 1,
+            borderRadius: 30,
+            height: 50,
+            paddingHorizontal: 15,
+        },
         divider: {
             marginTop: 0,
             marginBottom: 0,

@@ -29,7 +29,7 @@ export default ({ navigation }) => {
 
     return (
         <GradientScreen fill={true}>
-            <Image style={LocalStyle.logo} source={require('../assets/logo.png')} />
+            <Image style={localStyle.logo} source={require('../assets/logo.png')} />
 
             <Section spaceBetween={true}>
                 <Section gap={15}>
@@ -74,7 +74,7 @@ export default ({ navigation }) => {
     );
 }
 
-const LocalStyle = StyleSheet.create({
+const localStyle = StyleSheet.create({
     logo: {
         marginTop: 25,
         marginBottom: 35,
