@@ -13,7 +13,7 @@ export default ({ navigation }) => {
 
             <GradientCard gap={15}>
                 <CardElement gap={15}>
-                    <Section horizontal={true} gap={10}>
+                    <Section horizontal={true} gap={10} centerVertical={true}>
                         <Image style={localStyle.pfp} source={require('../assets/pfp.png')} />
                         <Header centerVertical={true} style={{ color: '#FFF' }}>Hoje tem aula!</Header>
                     </Section>
