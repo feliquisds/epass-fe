@@ -1,4 +1,4 @@
-import { ScrollView, TextInput, View } from "react-native"
+import { ImageBackground, ScrollView, TextInput, View } from "react-native"
 import { LinearGradient } from "expo-linear-gradient"
 import { getGap, Section } from "./Alignments"
 import { Subtext } from "./Texts"
@@ -19,10 +19,26 @@ export const SimpleScreen = ({ children, style, containerStyle, fill, scrollPadd
     )
 }
 
+export const ImageScreen = ({ children, style, containerStyle, fill, scrollPadding, tabScreen, source = require('../assets/background.png'), resizeMode = 'cover' }) => {
+    return (
+        <ImageBackground source={source} resizeMode={resizeMode} style={globalStyles().staticArea}>
+            <ScrollView style={[globalStyles().scrollArea, style]} contentContainerStyle={[
+                getGap(15),
+                containerStyle,
+                fill ? { height: '100%' } : {},
+                scrollPadding ? globalStyles().scrollPadding : {},
+                tabScreen ? globalStyles().tabScreenPadding : {}
+            ]}>
+                {children}
+            </ScrollView>
+        </ImageBackground>
+    )
+}
+
 export const GradientScreen = ({ children, gradient = colors().accent, style, containerStyle, fill, scrollPadding }) => {
     return (
-        <LinearGradient style={[globalStyles().screen, style]} colors={gradient}>
-            <ScrollView contentContainerStyle={[
+        <LinearGradient style={globalStyles().screen} colors={gradient}>
+            <ScrollView style={[globalStyles.scrollArea, style]} contentContainerStyle={[
                 getGap(15),
                 containerStyle,
                 fill ? { height: '100%' } : {},
@@ -49,7 +65,6 @@ export const Input = ({ style, placeholder, placeholderTextColor = colors().subt
 }
 
 export const RoundInput = ({ style, placeholder, placeholderTextColor = colors().subtext, value, onChangeText, secureTextEntry, editable = true, label }) => {
-
     return (
         <Section gap={5}>
             <Subtext>{label}</Subtext>

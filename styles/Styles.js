@@ -36,13 +36,17 @@ export default (force = "") => {
         },
 
         // interface
-        safe_area: {
+        scrollArea: {
+            flex: 1,
+            padding: globalStyleVariables.screenMargin,
+        },
+        staticArea: {
             flex: 1,
             backgroundColor: colors(force).background
         },
         screen: {
             flex: 1,
-            padding: 20,
+            padding: globalStyleVariables.screenMargin,
             backgroundColor: colors(force).background
         },
         input: {
@@ -86,7 +90,7 @@ export default (force = "") => {
             color: colors(force).accent,
             alignSelf: 'flex-start',
             fontSize: 16,
-            fontWeight: 700,
+            fontWeight: globalStyleVariables.accentWeight,
         },
         bigButton: {
             backgroundColor: colors(force).buttonText,

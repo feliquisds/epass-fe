@@ -15,7 +15,7 @@ export default () => {
 
     return (
         <SafeAreaProvider>
-            <SafeAreaView style={globalStyles().safe_area}>
+            <SafeAreaView style={globalStyles().staticArea}>
                 <StatusBar barStyle={theme == 'dark' ? 'light-content' : 'dark-content'} />
                 <NavigationContainer>
                     <Stack.Navigator initialRouteName="Login" screenOptions={{
