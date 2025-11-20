@@ -7,20 +7,46 @@ import { Divider, GradientScreen, Input } from '../components/Interface';
 import { Section } from '../components/Alignments';
 import { globalStyleVariables } from '../styles/Styles';
 import colors from '../styles/Colors';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { login as apiLogin } from '../services/auth';
 
 function timeout(delay) {
     return new Promise(res => setTimeout(res, delay));
 }
 
 async function processLogin(navigation, activity, email, pass) {
-    activity(true)
-    await timeout(1000)
+    activity(true);
+    try {
+        const data = await apiLogin(email, pass);
 
-    // if (email == 'admin' && pass == 'admin') navigation.navigate('Tabs')
+        // 1. Salva token localmente
+        await AsyncStorage.setItem('token', data.token);
 
-    navigation.navigate('Tabs')
-    activity(false)
+        // 2. NOVO: Salva o nome do responsável localmente
+        // IMPORTANTE: O seu backend Java precisa retornar o campo "nome" no JSON
+        if (data.nome) {
+            await AsyncStorage.setItem('user_name', data.nome);
+        }
+
+        // navega para Tabs
+        navigation.navigate('Tabs');
+
+    } catch (err) {
+        alert(err.message);
+    } finally {
+        activity(false);
+    }
 }
+
+// async function processLogin(navigation, activity, email, pass) {
+//     activity(true)
+//     await timeout(1000)
+
+//     // if (email == 'admin' && pass == 'admin') navigation.navigate('Tabs')
+
+//     navigation.navigate('Tabs')
+//     activity(false)
+// }
 
 export default ({ navigation }) => {
     const [showActivityIndicator, changeShowActivityIndicator] = useState(false)
@@ -43,6 +69,8 @@ export default ({ navigation }) => {
                                 placeholderTextColor={colors('light').subtext}
                                 value={getEmail}
                                 onChangeText={(value) => setEmail(value)}
+                                autoCapitalize="none" // Recomendado para emails
+                                keyboardType="email-address" // Abre o teclado com @
                             />
                         </CardElement>
 
@@ -66,7 +94,7 @@ export default ({ navigation }) => {
                 </Section>
 
                 <BigSimpleButton onPress={() => processLogin(navigation, changeShowActivityIndicator, getEmail, getPass)}>
-                    {showActivityIndicator ? <ActivityIndicator color={colors('light').accent[0]} style={{ backgroundColor: '#FFF' }} /> : 'Entrar'}
+                    {showActivityIndicator ? <ActivityIndicator color={colors('light').accent[0]} style={{ backgroundColor: '' }} /> : 'Entrar'}
                 </BigSimpleButton>
 
             </Section>
