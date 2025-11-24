@@ -14,39 +14,42 @@ function timeout(delay) {
     return new Promise(res => setTimeout(res, delay));
 }
 
-// async function processLogin(navigation, activity, email, pass) {
-//     activity(true);
-//     try {
-//         const data = await apiLogin(email, pass);
-
-//         // 1. Salva token localmente
-//         await AsyncStorage.setItem('token', data.token);
-
-//         // 2. NOVO: Salva o nome do responsável localmente
-//         // IMPORTANTE: O seu backend Java precisa retornar o campo "nome" no JSON
-//         if (data.nome) {
-//             await AsyncStorage.setItem('user_name', data.nome);
-//         }
-
-//         // navega para Tabs
-//         navigation.navigate('Tabs');
-
-//     } catch (err) {
-//         alert(err.message);
-//     } finally {
-//         activity(false);
-//     }
-// }
-
 async function processLogin(navigation, activity, email, pass) {
-    activity(true)
-    await timeout(1000)
+    activity(true);
+    try {
+        const data = await apiLogin(email, pass);
 
-    // if (email == 'admin' && pass == 'admin') navigation.navigate('Tabs')
+        // 1. Salva token localmente
+        await AsyncStorage.setItem('token', data.token);
 
-    navigation.navigate('Tabs')
-    activity(false)
+        // 2. NOVO: Salva o nome do responsável localmente
+        if (data.nome) {
+            await AsyncStorage.setItem('user_name', data.nome);
+        }
+
+        if (data.id) {
+            await AsyncStorage.setItem('user_id', String(data.id));
+        }
+
+        // navega para Tabs
+        navigation.navigate('Tabs');
+
+    } catch (err) {
+        alert(err.message);
+    } finally {
+        activity(false);
+    }
 }
+
+// async function processLogin(navigation, activity, email, pass) {
+//     activity(true)
+//     await timeout(1000)
+
+//     // if (email == 'admin' && pass == 'admin') navigation.navigate('Tabs')
+
+//     navigation.navigate('Tabs')
+//     activity(false)
+// }
 
 export default ({ navigation }) => {
     const [showActivityIndicator, changeShowActivityIndicator] = useState(false)
