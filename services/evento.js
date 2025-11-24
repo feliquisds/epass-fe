@@ -1,9 +1,12 @@
-import axios from 'axios';
+import api from "./api";
 
-// A URL base da sua API
-const api = axios.create({
-    baseURL: 'http://192.168.15.90:8080'
-
-})
-
-export default api;
+// Função que retorna os eventos.
+export async function getEvent() {
+    try {
+        const response = await api.get("/evento/findAll");
+        return response.data;
+    } catch (error) {
+        console.error("Erro ao buscar evento:", error);
+        return [];
+    }
+}
