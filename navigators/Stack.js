@@ -8,6 +8,7 @@ import Login from '../screens/Login'
 import Tabs from "./Tabs"
 import Recovery from "../screens/Recovery"
 import EditProfile from "../screens/EditProfile";
+import BankStatement from "../screens/BankStatement";
 
 const Stack = createStackNavigator()
 
@@ -41,6 +42,12 @@ export default () => {
                         <Stack.Screen
                             name="EditProfile"
                             component={EditProfile}
+                            options={{
+                                animation: 'slide_from_right'
+                            }} />
+                        <Stack.Screen
+                            name="BankStatement"
+                            component={BankStatement}
                             options={{
                                 animation: 'slide_from_right'
                             }} />

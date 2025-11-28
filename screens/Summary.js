@@ -8,6 +8,9 @@ import { Divider, SimpleScreen } from '../components/Interface';
 import { getEvent } from "../services/evento";
 import { getCarteira } from "../services/carteira";
 
+function bankStatement(navigation) {
+    navigation.navigate('BankStatement');
+}
 
 export default ({ navigation }) => {
 
@@ -110,7 +113,7 @@ export default ({ navigation }) => {
                 <Divider />
 
                 <CardElement>
-                    <SmallAccentButton>Visualizar extrato</SmallAccentButton>
+                    <SmallAccentButton onPress={() => bankStatement(navigation)}>Visualizar extrato</SmallAccentButton>
                 </CardElement>
 
                 <Divider />
