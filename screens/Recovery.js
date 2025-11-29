@@ -48,7 +48,7 @@ export default ({ navigation }) => {
                 </Card>
 
                 <BigAccentButton onPress={() => processRecovery(navigation, changeShowActivityIndicator, getEmail)}>
-                    {showActivityIndicator ? <ActivityIndicator color={'#FFF'} /> : 'Entrar'}
+                    {showActivityIndicator ? <ActivityIndicator color={'#FFF'} /> : 'Confirmar'}
                 </BigAccentButton>
             </Section>
 

@@ -2,6 +2,7 @@ import { useColorScheme } from 'react-native'
 
 const fixedColors = {
     accent: ['#FF5B8F', '#FF9A4E'],
+    ai: ['#4c8dff', '#0309C4'],
     buttonText: '#FFFFFF'
 }
 

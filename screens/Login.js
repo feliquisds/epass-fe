@@ -45,7 +45,7 @@ async function handleLogin(navigation, activity, email, pass) {
     activity(true)
     await timeout(1000)
 
-    navigation.navigate('Tabs')
+    navigation.replace('Tabs')
     activity(false)
 }
 
@@ -53,7 +53,7 @@ export default ({ navigation }) => {
     const [showActivityIndicator, changeShowActivityIndicator] = useState(false)
     const [getEmail, setEmail] = useState('')
     const [getPass, setPass] = useState('')
-    const activityIndicator = <ActivityIndicator color={globalColors('light').accent[0]} style={{ backgroundColor: 'none' }} />
+    const activityIndicator = <ActivityIndicator color={globalColors('light').accent[0]} style={{ backgroundColor: 'white' }} />
 
     return (
         <GradientScreen fill>
@@ -94,6 +94,7 @@ export default ({ navigation }) => {
                         Esqueci a senha
                     </SmallSimpleButton>
                 </Section>
+
 
                 <BigSimpleButton onPress={() => handleLogin(navigation, changeShowActivityIndicator, getEmail, getPass)}>
                     {showActivityIndicator ? activityIndicator : 'Entrar'}

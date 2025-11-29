@@ -22,6 +22,10 @@ function goToAddCredit(navigation) {
     navigation.navigate('AddCredit');
 }
 
+function goToQRCode(navigation) {
+    navigation.navigate('QRCode');
+}
+
 export default ({ navigation }) => {
     // const [eventos, setEventos] = useState([]);
     // const [carteira, setCarteira] = useState({ saldo: 0 });
@@ -72,7 +76,7 @@ export default ({ navigation }) => {
                         <Header centerVertical style={{ color: '#FFF' }}>Hoje tem aula!</Header>
                     </Section>
 
-                    <SlimSimpleButton>Liberar aluno</SlimSimpleButton>
+                    <SlimSimpleButton onPress={() => goToQRCode(navigation)}>Liberar aluno</SlimSimpleButton>
                 </CardElement>
             </GradientCard>
 

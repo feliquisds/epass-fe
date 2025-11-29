@@ -2,6 +2,7 @@ import { useLinkBuilder } from '@react-navigation/native';
 import { PlatformPressable } from '@react-navigation/elements';
 import { GradientSubtext } from './Texts';
 import { Section } from './Alignments';
+import { MaterialIcons } from '@expo/vector-icons';
 import globalStyles from '../styles/Styles';
 import globalColors from '../styles/Colors';
 
@@ -10,16 +11,16 @@ function getTabBarIcon(route, focused) {
 
     switch (route) {
         case 'Resumo':
-            icon = focused ? 'home-fill' : 'home'
+            icon = 'home'
             break
         case 'Relatório':
-            icon = focused ? 'home-fill' : 'home'
+            icon = 'grading'
             break
         case 'Avisos':
-            icon = focused ? 'home-fill' : 'home'
+            icon = 'notifications'
             break
         case 'Perfil':
-            icon = focused ? 'home-fill' : 'home'
+            icon = 'person'
             break
     }
 
@@ -67,9 +68,10 @@ export function TabBar({ state, descriptors, navigation }) {
                         onPress={onPress}
                         style={[globalStyles().tabBarEntry, isFocused ? { backgroundColor: foreground } : {}]}
                     >
-                        <GradientSubtext accented={isFocused}
-                            gradient={isFocused ? accent : [inactive, inactive]}
-                        >
+                        <GradientSubtext gradient={isFocused ? accent : [inactive, inactive]}>
+                            <MaterialIcons name={getTabBarIcon(route.name, isFocused)} size={20} />
+                        </GradientSubtext>
+                        <GradientSubtext accented={isFocused} gradient={isFocused ? accent : [inactive, inactive]}>
                             {label}
                         </GradientSubtext>
                     </PlatformPressable>

@@ -141,7 +141,7 @@ export default (force = '') => {
             borderRadius: 100,
             padding: 10,
             paddingLeft: 14,
-            paddingTop: 11
+            paddingTop: 10
         },
         backButtonIcon: {
             color: globalColors(force).text,

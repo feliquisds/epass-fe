@@ -11,6 +11,8 @@ import EditProfile from '../screens/EditProfile';
 import ViewStatement from '../screens/ViewStatement';
 import AddCredit from '../screens/AddCredit';
 import Accessibility from '../screens/Accessibility';
+import QRCode from '../screens/QRCode';
+import AIReport from '../screens/AIReport';
 
 const Stack = createStackNavigator()
 
@@ -37,6 +39,8 @@ export default () => {
                         <Stack.Screen name='ViewStatement' component={ViewStatement} />
                         <Stack.Screen name='AddCredit' component={AddCredit} />
                         <Stack.Screen name='Accessibility' component={Accessibility} />
+                        <Stack.Screen name='QRCode' component={QRCode} />
+                        <Stack.Screen name='AIReport' component={AIReport} />
                     </Stack.Navigator>
                 </NavigationContainer>
             </SafeAreaView>

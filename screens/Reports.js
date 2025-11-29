@@ -1,9 +1,10 @@
-import { FlatList } from 'react-native';
+import { FlatList, Image, StyleSheet } from 'react-native';
 import { Divider, SimpleScreen } from '../components/Interface';
 import { Header, Title, Text, Subtext } from '../components/Texts';
 import { Card, CardElement, GradientCard } from '../components/Cards';
 import { SlimSimpleButton, SmallAccentButton } from '../components/Buttons';
 import { Section } from '../components/Alignments';
+import globalColors from '../styles/Colors';
 
 const DATA = [
     { id: '1', title: 'Multiplicação', date: '10 de set.', score: '5,00', subject: 'Matemática' },
@@ -11,7 +12,11 @@ const DATA = [
     { id: '3', title: 'Verbos', date: '8 de set.', score: '9,00', subject: 'Português' },
 ];
 
-export default () => {
+function goToAIReport(navigation) {
+    navigation.navigate('AIReport')
+}
+
+export default ({ navigation }) => {
     const renderNote = ({ item }) => (
         <CardElement horizontal spaceBetween centerVertical>
             <Section>
@@ -27,15 +32,16 @@ export default () => {
 
     return (
         <SimpleScreen tabScreen>
-            <Title>Relatórios</Title>
+            <Title>Relatório</Title>
 
-            <GradientCard gradient={['#4c8dff', '#1e66ff']}>
+            <GradientCard gradient={globalColors().ai}>
                 <CardElement gap={15}>
-                    <Section gap={5}>
-                        <Header style={{ color: '#fff' }}>Dificuldade em matemática</Header>
-                        <Text style={{ color: '#fff' }}>Acompanhe o desempenho de seu filho com nossa IA</Text>
+                    <Section horizontal spaceBetween centerVertical gap={5}>
+                        <Header style={{ color: 'white', width: '70%' }}>Dificuldade em matemática</Header>
+                        <Image style={localStyles.sparkle} source={require('../assets/sparkle.png')} />
                     </Section>
-                    <SlimSimpleButton gradient={['#4c8dff', '#1e66ff']}>Ver análise de desempenho</SlimSimpleButton>
+                    <Text style={{ color: 'white' }}>Acompanhe o desempenho de seu filho com nossa IA</Text>
+                    <SlimSimpleButton gradient={globalColors().ai} onPress={() => goToAIReport(navigation)}>Ver análise de desempenho</SlimSimpleButton>
                 </CardElement>
             </GradientCard>
 
@@ -58,9 +64,16 @@ export default () => {
                 <CardElement>
                     <SmallAccentButton>Verificar boletim</SmallAccentButton>
                 </CardElement>
-
             </Card>
 
         </SimpleScreen>
     );
 }
+
+const localStyles = StyleSheet.create({
+    sparkle: {
+        height: 80,
+        width: 80,
+        margin: -10
+    }
+})

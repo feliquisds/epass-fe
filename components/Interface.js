@@ -42,8 +42,8 @@ export const ImageScreen = ({ children, style, containerStyle, fill, scrollPaddi
 export const GradientScreen = ({ children, gradient = globalColors().accent, style, containerStyle, fill, scrollPadding }) => {
     const scrollPaddingStyle = globalStyles().scrollPadding
     return (
-        <LinearGradient style={globalStyles().screen} colors={gradient}>
-            <ScrollView style={[globalStyles.scrollArea, style]} contentContainerStyle={[
+        <LinearGradient style={{ height: '100%' }} colors={gradient}>
+            <ScrollView style={[globalStyles.scrollArea, globalStyles().screen, {backgroundColor: 'transparent'}, style]} contentContainerStyle={[
                 getGap(15),
                 containerStyle,
                 fill ? { height: '100%' } : {},
@@ -57,7 +57,7 @@ export const GradientScreen = ({ children, gradient = globalColors().accent, sty
 
 export const Input = ({ style, placeholder, placeholderTextColor = null, value, onChangeText, secureTextEntry, editable, autoCapitalize, keyboardType, big }) => {
     const defaultPlaceholderTextColor = globalColors().subtext
-    placeholderTextColor == null ? defaultPlaceholderTextColor : placeholderTextColor
+    placeholderTextColor = placeholderTextColor == null ? defaultPlaceholderTextColor : placeholderTextColor
     return (
         <TextInput
             style={[globalStyles().input, big ? { fontSize: globalStyleVariables.header } : {}, style]}

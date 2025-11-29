@@ -12,7 +12,7 @@ export default ({ navigation }) => {
     const [getContrast, setContrast] = useState(false)
 
     return (
-        <SimpleScreen fill>
+        <SimpleScreen>
             <TitleWithBackButton navigation={navigation}>
                 Acessibilidade
             </TitleWithBackButton>
@@ -42,8 +42,7 @@ export default ({ navigation }) => {
 
                 <CardElement>
                     <Section horizontal spaceBetween centerVertical>
-                        <Text accented style={localStyles.colorOverride}>Leitor de Tela</Text>
-
+                        <Text accented style={[localStyles.colorOverride, { fontSize: 16 }]}>Leitor de Tela</Text>
                         <AccentToggle value={getScreenReader} onValueChange={() => setScreenReader(!getScreenReader)} />
                     </Section>
                 </CardElement>
@@ -53,7 +52,6 @@ export default ({ navigation }) => {
                 <CardElement>
                     <Section horizontal spaceBetween centerVertical>
                         <Text accented style={localStyles.colorOverride}>Contraste</Text>
-
                         <AccentToggle value={getContrast} onValueChange={() => setContrast(!getContrast)} />
                     </Section>
                 </CardElement>
