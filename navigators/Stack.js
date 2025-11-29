@@ -9,6 +9,7 @@ import Tabs from "./Tabs"
 import Recovery from "../screens/Recovery"
 import EditProfile from "../screens/EditProfile";
 import BankStatement from "../screens/BankStatement";
+import AddCredit from "../screens/AddCredit";
 
 const Stack = createStackNavigator()
 
@@ -51,6 +52,13 @@ export default () => {
                             options={{
                                 animation: 'slide_from_right'
                             }} />
+                        <Stack.Screen
+                            name="AddCredit"
+                            component={AddCredit}
+                            options={{
+                                animation: 'slide_from_right'
+                            }} />
+                            
                     </Stack.Navigator>
                 </NavigationContainer>
             </SafeAreaView>

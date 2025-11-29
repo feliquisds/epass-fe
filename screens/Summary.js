@@ -12,6 +12,10 @@ function bankStatement(navigation) {
     navigation.navigate('BankStatement');
 }
 
+function addCredit(navigation) {
+    navigation.navigate('AddCredit');
+}
+
 export default ({ navigation }) => {
 
 
@@ -67,15 +71,8 @@ export default ({ navigation }) => {
     );
 
     return (
-
-        
-
-
-
         <SimpleScreen tabScreen={true}>
-
             <Title>Resumo</Title>
-
             <GradientCard gap={15}>
                 <CardElement gap={15}>
                     <Section horizontal={true} gap={10} centerVertical={true}>
@@ -119,7 +116,7 @@ export default ({ navigation }) => {
                 <Divider />
 
                 <CardElement>
-                    <SmallAccentButton>Adicionar crédito</SmallAccentButton>
+                    <SmallAccentButton onPress={() => addCredit(navigation)}>Adicionar crédito</SmallAccentButton>
                 </CardElement>
             </Card>
 
