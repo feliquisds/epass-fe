@@ -1,9 +1,9 @@
-import { ImageBackground, ScrollView, TextInput, View } from "react-native"
-import { LinearGradient } from "expo-linear-gradient"
-import { getGap, Section } from "./Alignments"
-import { Subtext } from "./Texts"
-import globalStyles from "../styles/Styles"
-import globalColors from "../styles/Colors"
+import { ImageBackground, ScrollView, TextInput, View } from 'react-native'
+import { LinearGradient } from 'expo-linear-gradient'
+import { getGap, Section } from './Alignments'
+import { Subtext } from './Texts'
+import globalStyles from '../styles/Styles'
+import globalColors from '../styles/Colors'
 
 export const SimpleScreen = ({ children, style, containerStyle, fill, scrollPadding, tabScreen }) => {
     const scrollPaddingStyle = globalStyles().scrollPadding

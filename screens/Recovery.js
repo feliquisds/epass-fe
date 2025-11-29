@@ -40,7 +40,7 @@ export default ({ navigation }) => {
 
                     <CardElement>
                         <Input
-                            placeholder="Email"
+                            placeholder='Email'
                             value={getEmail}
                             onChangeText={(value) => setEmail(value)}
                         />

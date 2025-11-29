@@ -3,7 +3,7 @@
 /**
  * Calcula a diferença em dias entre a data do evento e a data atual.
  * @param {string} eventDateString - A data do evento no formato 'YYYY-MM-DD'.
- * @returns {string} Uma string formatada como "Em X dias", "Hoje" ou "Encerrado".
+ * @returns {string} Uma string formatada como 'Em X dias', 'Hoje' ou 'Encerrado'.
  */
 export const getDaysUntilEvent = (eventDateString) => {
     // 1. Cria a data do evento (ajustando o fuso horário para garantir que seja o início do dia)

@@ -1,17 +1,17 @@
-// import { useState, useEffect } from "react";
-// import { getEvent } from "../services/evento";
-// import { getCarteira } from "../services/carteira";
+// import { useState, useEffect } from 'react';
+// import { getEvent } from '../services/evento';
+// import { getCarteira } from '../services/carteira';
 import { Image, StyleSheet, FlatList } from 'react-native';
-import { SlimSimpleButton, SmallAccentButton } from "../components/Buttons";
-import { Card, CardElement, GradientCard } from "../components/Cards";
+import { SlimSimpleButton, SmallAccentButton } from '../components/Buttons';
+import { Card, CardElement, GradientCard } from '../components/Cards';
 import { Section } from '../components/Alignments';
 import { Header, Subtext, Text, Title } from '../components/Texts';
 import { Divider, SimpleScreen } from '../components/Interface';
 
 const DATA = [
-    { id: 1, titulo: "Excursão", dataInicio: "Em 3 dias", categoria: "Escola" },
-    { id: 2, titulo: "Reunião de pais", dataInicio: "Em 5 dias", categoria: "Escola" },
-    { id: 3, titulo: "Prova", dataInicio: "Em 7 dias", categoria: "Matemática" }
+    { id: 1, titulo: 'Excursão', dataInicio: 'Em 3 dias', categoria: 'Escola' },
+    { id: 2, titulo: 'Reunião de pais', dataInicio: 'Em 5 dias', categoria: 'Escola' },
+    { id: 3, titulo: 'Prova', dataInicio: 'Em 7 dias', categoria: 'Matemática' }
 ]
 
 function goToViewStatement(navigation) {
@@ -31,7 +31,7 @@ export default ({ navigation }) => {
     //         const data = await getCarteira();
     //         setCarteira(data);
     //     } catch (error) {
-    //         console.error("Falha ao carregar a carteira", error);
+    //         console.error('Falha ao carregar a carteira', error);
     //         setCarteira({ saldo: 0 });
     //     }
     // }
@@ -41,7 +41,7 @@ export default ({ navigation }) => {
     //         const lista = await getEvent();
     //         setEventos(lista || []);
     //     } catch (error) {
-    //         console.error("Erro ao carregar eventos:", error);
+    //         console.error('Erro ao carregar eventos:', error);
     //     }
     // }
 

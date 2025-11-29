@@ -17,17 +17,17 @@ export default ({ navigation }) => {
 
             <Card gap={10} style={{ paddingTop: 20 }}>
                 <CardElement gap={15}>
-                    <RoundInput label="Nome Completo:" placeholder="Alexia Martins Castro" value="Alexia Martins Castro" editable={false} />
-                    <RoundInput label="Email:" placeholder="alexia.martins@gmail.com" value="alexia.martins@gmail.com" />
+                    <RoundInput label='Nome Completo:' placeholder='Alexia Martins Castro' value='Alexia Martins Castro' editable={false} />
+                    <RoundInput label='Email:' placeholder='alexia.martins@gmail.com' value='alexia.martins@gmail.com' />
                 </CardElement>
             </Card>
 
-            <Card label="Informações Adicionais" gap={10}>
+            <Card label='Informações Adicionais' gap={10}>
                 <CardElement gap={15}>
-                    <RoundInput label="CPF:" placeholder="123.456.789-09" value="123.456.789-09" editable={false} />
-                    <RoundInput label="Endereço:" placeholder="Rua A, 123 , Jardim ABC - FV/SP" value="Rua A, 123 , Jardim ABC - FV/SP" />
-                    <RoundInput label="Telefone:" placeholder="11 99999-9999" value="11 99999-9999" editable />
-                    <RoundInput label="Filhos(as):" placeholder="Gabriela Martins" value="Gabriela Martins" editable={false} />
+                    <RoundInput label='CPF:' placeholder='123.456.789-09' value='123.456.789-09' editable={false} />
+                    <RoundInput label='Endereço:' placeholder='Rua A, 123 , Jardim ABC - FV/SP' value='Rua A, 123 , Jardim ABC - FV/SP' />
+                    <RoundInput label='Telefone:' placeholder='11 99999-9999' value='11 99999-9999' editable />
+                    <RoundInput label='Filhos(as):' placeholder='Gabriela Martins' value='Gabriela Martins' editable={false} />
                 </CardElement>
             </Card>
 

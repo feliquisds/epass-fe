@@ -1,9 +1,8 @@
 import { TitleWithBackButton, Header, Subtext } from '../components/Texts';
 import { SimpleScreen, Input, Divider } from '../components/Interface';
-import { useState, useEffect } from "react";
-import { StyleSheet } from 'react-native';
+import { useState, useEffect } from 'react';
 import { Card, CardElement } from '../components/Cards';
-import { SlimAccentButton } from '../components/Buttons';
+import { BigAccentButton, SlimAccentButton } from '../components/Buttons';
 import { Section } from '../components/Alignments';
 
 export default ({ navigation }) => {
@@ -15,7 +14,7 @@ export default ({ navigation }) => {
     //             const data = await getCarteira();
     //             setCarteira(data);
     //         } catch (error) {
-    //             console.error("Falha ao carregar a carteira", error);
+    //             console.error('Falha ao carregar a carteira', error);
     //             setCarteira({ saldo: 0 });
     //         }
     //     }
@@ -24,7 +23,7 @@ export default ({ navigation }) => {
     // }, []);
 
     return (
-        <SimpleScreen>
+        <SimpleScreen scrollPadding>
             <TitleWithBackButton navigation={navigation}>
                 Adicionar Crédito
             </TitleWithBackButton>
@@ -35,9 +34,9 @@ export default ({ navigation }) => {
                         <Header>Quanto quer adicionar?</Header>
                         <Subtext>Crédito disponivel: R${Number(getCarteira.saldo || 0).toFixed(2)}</Subtext>
                     </Section>
-                    <Section horizontal gap={10}>
+                    <Section horizontal gap={10} centerVertical>
                         <Header>R$</Header>
-                        <Input style={{ fontSize: 24 }} placeholder={"0.00"} />
+                        <Input style={{ fontSize: 24 }} placeholder={'0.00'} />
                     </Section>
                 </CardElement>
                 <Divider />
@@ -62,21 +61,25 @@ export default ({ navigation }) => {
                     <Header>Informações do cartão</Header>
                 </CardElement>
                 <CardElement>
-                    <Input placeholder="Nome no cartão" />
+                    <Input placeholder='Nome no cartão' />
                 </CardElement>
                 <Divider />
                 <CardElement>
-                    <Input placeholder="Número" />
+                    <Input placeholder='Número' />
                 </CardElement>
                 <Divider />
                 <CardElement>
-                    <Input placeholder="Validade" />
+                    <Input placeholder='Validade' />
                 </CardElement>
                 <Divider />
                 <CardElement>
-                    <Input placeholder="CVC" />
+                    <Input placeholder='CVC' />
                 </CardElement>
+                <Divider />
+                <CardElement />
             </Card>
+
+            <BigAccentButton>Confirmar</BigAccentButton>
         </SimpleScreen>
     );
 };

@@ -2,7 +2,7 @@ import { PlatformPressable } from '@react-navigation/elements';
 import { MaterialIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Text, GradientText } from './Texts';
-import globalStyles from "../styles/Styles";
+import globalStyles from '../styles/Styles';
 import globalColors from '../styles/Colors';
 
 export const BigSimpleButton = ({ children, onPress, gradient = null }) => {
@@ -70,7 +70,7 @@ export const SmallAccentButton = ({ children, onPress, style, gradient = null })
 export const BackButton = ({ navigation }) => {
     return (
         <PlatformPressable style={globalStyles().backButton} onPress={() => navigation.goBack()}>
-            <MaterialIcons name="arrow-back-ios" style={globalStyles().backButtonIcon} />
+            <MaterialIcons name='arrow-back-ios' style={globalStyles().backButtonIcon} />
         </PlatformPressable>
     )
 }

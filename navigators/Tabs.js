@@ -1,32 +1,32 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import { TabBar } from "../components/TabBar";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { TabBar } from '../components/TabBar';
 
 import Summary from '../screens/Summary'
-import Reports from "../screens/Reports";
-import Notifications from "../screens/Notifications";
-import Profile from "../screens/Profile";
+import Reports from '../screens/Reports';
+import Notifications from '../screens/Notifications';
+import Profile from '../screens/Profile';
 
 export const Tab = createBottomTabNavigator()
 
 export default () => {
     return (
-        <Tab.Navigator initialRouteName="Resumo" tabBar={(props) => <TabBar {...props}/>} screenOptions={{
+        <Tab.Navigator initialRouteName='Resumo' tabBar={(props) => <TabBar {...props}/>} screenOptions={{
             headerShown: false
         }}>
             <Tab.Screen
-                name="Resumo"
+                name='Resumo'
                 component={Summary}
             />
             <Tab.Screen
-                name="Relatório"
+                name='Relatório'
                 component={Reports}
             />
             <Tab.Screen
-                name="Avisos"
+                name='Avisos'
                 component={Notifications}
             />
             <Tab.Screen
-                name="Perfil"
+                name='Perfil'
                 component={Profile}
             />
         </Tab.Navigator>

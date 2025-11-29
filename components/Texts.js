@@ -2,7 +2,7 @@ import { Text as ReactText } from 'react-native';
 import { GradientText as ReactGradientText } from 'universal-gradient-text'
 import { BackButton } from './Buttons';
 import { Section } from './Alignments';
-import globalStyles from "../styles/Styles";
+import globalStyles from '../styles/Styles';
 import globalColors from '../styles/Colors';
 
 export const Title = ({ children, style }) => {

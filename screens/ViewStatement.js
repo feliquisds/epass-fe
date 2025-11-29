@@ -7,14 +7,14 @@ import { Section } from '../components/Alignments';
 
 const DATA = [
     {
-        id: 1, title: "Essa semana", data: [
+        id: 1, title: 'Essa semana', data: [
             { id: '1', title: 'Pão de batata', date: '10 de set.', value: 3.5, change: 'NEG' },
             { id: '2', title: 'Pão de batata', date: '9 de set.', value: 3.5, change: 'NEG' },
             { id: '3', title: 'Croissaint', date: '8 de set.', value: 5, change: 'NEG' }
         ]
     },
     {
-        id: 2, title: "Mês passado", data: [
+        id: 2, title: 'Mês passado', data: [
             { id: '1', title: 'Pão de batata', date: '10 de ago.', value: 3.5, change: 'NEG' },
             { id: '2', title: 'Pão de batata', date: '9 de ago.', value: 3.5, change: 'NEG' },
             { id: '3', title: 'Croissaint', date: '8 de ago.', value: 5, change: 'NEG' },
@@ -33,18 +33,17 @@ export default ({ navigation }) => {
                 </Section>
                 <Section alignRight>
                     {
-                        item.change == "POS" &&
-                        <Header style={{ color: "green" }}>
+                        item.change == 'POS' &&
+                        <Header style={{ color: 'green' }}>
                             R$ {Number(item.value).toFixed(2)}
                         </Header>
                     }
                     {
-                        item.change == "NEG" &&
+                        item.change == 'NEG' &&
                         <Header>
                             -R$ {Number(item.value).toFixed(2)}
                         </Header>
                     }
-                    <Subtext>{item.subject}</Subtext>
                 </Section>
             </CardElement>
         );

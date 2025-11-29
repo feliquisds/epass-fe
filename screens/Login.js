@@ -53,7 +53,7 @@ export default ({ navigation }) => {
     const [showActivityIndicator, changeShowActivityIndicator] = useState(false)
     const [getEmail, setEmail] = useState('')
     const [getPass, setPass] = useState('')
-    const activityIndicator = <ActivityIndicator color={globalColors('light').accent[0]} style={{ backgroundColor: '' }} />
+    const activityIndicator = <ActivityIndicator color={globalColors('light').accent[0]} style={{ backgroundColor: 'none' }} />
 
     return (
         <GradientScreen fill>
@@ -67,12 +67,12 @@ export default ({ navigation }) => {
                         <CardElement>
                             <Input
                                 style={{ color: globalColors('light').text }}
-                                placeholder="Email"
+                                placeholder='Email'
                                 placeholderTextColor={globalColors('light').subtext}
                                 value={getEmail}
                                 onChangeText={(value) => setEmail(value)}
-                                autoCapitalize="none"
-                                keyboardType="email-address"
+                                autoCapitalize='none'
+                                keyboardType='email-address'
                             />
                         </CardElement>
 
@@ -81,7 +81,7 @@ export default ({ navigation }) => {
                         <CardElement>
                             <Input
                                 style={{ color: globalColors('light').text }}
-                                placeholder="Senha"
+                                placeholder='Senha'
                                 placeholderTextColor={globalColors('light').subtext}
                                 secureTextEntry={true}
                                 value={getPass}

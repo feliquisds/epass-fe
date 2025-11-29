@@ -30,11 +30,11 @@ export default function Profile({ navigation }) {
     function changeTheme(isDarkMode) {
         if (isDarkMode) {
             setCurrentTheme('dark')
-            console.log("modo escuro ativado")
+            console.log('modo escuro ativado')
         }
         else {
             setCurrentTheme('light')
-            console.log("modo escuro desativado")
+            console.log('modo escuro desativado')
         }
     }
 
@@ -76,7 +76,7 @@ export default function Profile({ navigation }) {
             </Card>
         </SimpleScreen>
     );
-};
+}
 
 const localStyles = StyleSheet.create({
     profilePicture: {
@@ -90,5 +90,5 @@ const localStyles = StyleSheet.create({
 });
 
 const localColors = {
-    logout: "#FF002F"
+    logout: '#FF002F'
 }

@@ -1,5 +1,5 @@
-import { View } from "react-native"
-import globalStyles from "../styles/Styles"
+import { View } from 'react-native'
+import globalStyles from '../styles/Styles'
 
 export function getGap(gap) {
     if (gap == 15) return { gap: 15 }

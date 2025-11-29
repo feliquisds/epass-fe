@@ -30,7 +30,7 @@ export const AccentToggle = (props) => {
             useNativeDriver: false,
             easing: Easing.ease
         }).start();
-    }, [value]);
+    }, [value, animatedValue]);
 
     return (
         <PlatformPressable onPress={toggleSwitch} disabled={disabled}>

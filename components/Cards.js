@@ -1,7 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { Subtext } from './Texts';
 import { getGap, Section } from './Alignments';
-import globalStyles from "../styles/Styles";
+import globalStyles from '../styles/Styles';
 import globalColors from '../styles/Colors';
 
 export const Card = ({ children, style, subtitleStyle, gap, label }) => {

@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { TitleWithBackButton, Text } from "../components/Texts";
-import { Section } from "../components/Alignments";
-import { CardElement, GradientCard } from "../components/Cards";
-import { SimpleScreen, Divider } from "../components/Interface";
-import { MaterialIcons } from "@expo/vector-icons";
-import { StyleSheet } from "react-native";
-import { AccentToggle } from "../components/Toggles";
+import { useState } from 'react';
+import { TitleWithBackButton, Text } from '../components/Texts';
+import { Section } from '../components/Alignments';
+import { CardElement, GradientCard } from '../components/Cards';
+import { SimpleScreen, Divider } from '../components/Interface';
+import { MaterialIcons } from '@expo/vector-icons';
+import { StyleSheet } from 'react-native';
+import { AccentToggle } from '../components/Toggles';
 
 export default ({ navigation }) => {
     const [getScreenReader, setScreenReader] = useState(false)
@@ -17,52 +17,44 @@ export default ({ navigation }) => {
                 Acessibilidade
             </TitleWithBackButton>
 
-            <Section centerVertical style={{ alignItems: "center", marginVertical: 10 }}>
-                <GradientCard
-                    style={{
-                        width: 120,
-                        height: 120,
-                        borderRadius: 60,
-                        alignItems: "center",
-                        justifyContent: "center"
-                    }}
-                >
-                    <MaterialIcons name="accessibility-new" size={60} color="white" />
+            <Section centerVertical>
+                <GradientCard style={localStyles.accessibilityIcon}>
+                    <MaterialIcons name='accessibility-new' size={60} color='white' />
                 </GradientCard>
             </Section>
 
-            <GradientCard gap={20} style={{ height: '100%' }}>
+            <GradientCard style={{ height: '100%' }}>
 
                 <CardElement>
-                    <Section centerVertical style={{ alignItems: "center" }}>
-                        <Text accented style={{ color: "white" }}>
+                    <Section centerVertical style={{ alignItems: 'center' }}>
+                        <Text accented style={{ color: 'white' }}>
                             Tamanho da Fonte
                         </Text>
                     </Section>
                     <Section horizontal centerVertical spaceBetween gap={10}>
-                        <MaterialIcons name="text-fields" size={22} color="white" />
+                        <MaterialIcons name='text-fields' size={22} color='white' />
                         <Divider style={localStyles.textSizeLine} />
-                        <MaterialIcons name="text-fields" size={28} color="white" />
+                        <MaterialIcons name='text-fields' size={28} color='white' />
                     </Section>
                 </CardElement>
 
-                <Divider style={{ borderColor: "#ffffff60" }} />
+                <Divider style={{ borderColor: '#ffffff60' }} />
 
                 <CardElement>
                     <Section horizontal spaceBetween centerVertical>
-                        <Text style={{ color: "white" }}>Leitor de Tela</Text>
+                        <Text style={{ color: 'white' }}>Leitor de Tela</Text>
 
-                        <AccentToggle value={getScreenReader} onValueChange={() => setScreenReader(!getScreenReader)}/>
+                        <AccentToggle value={getScreenReader} onValueChange={() => setScreenReader(!getScreenReader)} />
                     </Section>
                 </CardElement>
 
-                <Divider style={{ borderColor: "#ffffff60" }} />
+                <Divider style={{ borderColor: '#ffffff60' }} />
 
                 <CardElement>
                     <Section horizontal spaceBetween centerVertical>
-                        <Text style={{ color: "white" }}>Contraste</Text>
+                        <Text style={{ color: 'white' }}>Contraste</Text>
 
-                        <AccentToggle value={getContrast} onValueChange={() => setContrast(!getContrast)}/>
+                        <AccentToggle value={getContrast} onValueChange={() => setContrast(!getContrast)} />
                     </Section>
                 </CardElement>
 
@@ -75,7 +67,16 @@ export default ({ navigation }) => {
 const localStyles = StyleSheet.create({
     textSizeLine: {
         flex: 1,
-        borderColor: "#ffffff80",
+        borderColor: '#ffffff80',
         borderBottomWidth: 2
+    },
+    accessibilityIcon: {
+        width: 120,
+        height: 120,
+        borderRadius: 60,
+        alignItems: 'center',
+        alignSelf: 'center',
+        justifyContent: 'center',
+        marginVertical: 10
     }
 })

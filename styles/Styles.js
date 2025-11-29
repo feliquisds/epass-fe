@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet } from 'react-native'
 import globalColors from './Colors'
 
 export const globalStyleVariables = {
@@ -7,7 +7,7 @@ export const globalStyleVariables = {
     accentWeight: 700
 }
 
-export default (force = "") => {
+export default (force = '') => {
     return StyleSheet.create({
         // text
         title: {

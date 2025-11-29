@@ -2,8 +2,8 @@ import { useLinkBuilder } from '@react-navigation/native';
 import { PlatformPressable } from '@react-navigation/elements';
 import { GradientSubtext } from './Texts';
 import { Section } from './Alignments';
-import globalStyles from "../styles/Styles";
-import globalColors from "../styles/Colors";
+import globalStyles from '../styles/Styles';
+import globalColors from '../styles/Colors';
 
 function getTabBarIcon(route, focused) {
     let icon

@@ -1,4 +1,4 @@
-import { useColorScheme } from "react-native"
+import { useColorScheme } from 'react-native'
 
 const fixedColors = {
     accent: ['#FF5B8F', '#FF9A4E'],
@@ -27,10 +27,10 @@ const darkColors = {
     ...fixedColors
 }
 
-export default function (force = "") {
+export default function (force = '') {
     const theme = useColorScheme()
-    if (force == "light") return lightColors
-    if (force == "dark") return darkColors
+    if (force == 'light') return lightColors
+    if (force == 'dark') return darkColors
     return {
         background: theme == 'dark' ? darkColors.background : lightColors.background,
         text: theme == 'dark' ? darkColors.text : lightColors.text,
