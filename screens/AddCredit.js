@@ -36,7 +36,7 @@ export default ({ navigation }) => {
                     </Section>
                     <Section horizontal gap={10} centerVertical>
                         <Header>R$</Header>
-                        <Input style={{ fontSize: 24 }} placeholder={'0.00'} />
+                        <Input big placeholder={'0.00'} />
                     </Section>
                 </CardElement>
                 <Divider />

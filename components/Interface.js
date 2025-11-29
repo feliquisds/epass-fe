@@ -2,7 +2,7 @@ import { ImageBackground, ScrollView, TextInput, View } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { getGap, Section } from './Alignments'
 import { Subtext } from './Texts'
-import globalStyles from '../styles/Styles'
+import globalStyles, { globalStyleVariables } from '../styles/Styles'
 import globalColors from '../styles/Colors'
 
 export const SimpleScreen = ({ children, style, containerStyle, fill, scrollPadding, tabScreen }) => {
@@ -55,12 +55,12 @@ export const GradientScreen = ({ children, gradient = globalColors().accent, sty
     )
 }
 
-export const Input = ({ style, placeholder, placeholderTextColor = null, value, onChangeText, secureTextEntry, editable, autoCapitalize, keyboardType }) => {
+export const Input = ({ style, placeholder, placeholderTextColor = null, value, onChangeText, secureTextEntry, editable, autoCapitalize, keyboardType, big }) => {
     const defaultPlaceholderTextColor = globalColors().subtext
     placeholderTextColor == null ? defaultPlaceholderTextColor : placeholderTextColor
     return (
         <TextInput
-            style={[globalStyles().input, style]}
+            style={[globalStyles().input, big ? { fontSize: globalStyleVariables.header } : {}, style]}
             placeholder={placeholder}
             placeholderTextColor={placeholderTextColor}
             secureTextEntry={secureTextEntry}

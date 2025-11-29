@@ -11,18 +11,18 @@ export default ({ navigation }) => {
 
     return (
         <ImageScreen tabScreen>
-            <TitleWithBackButton style={{ color: '#FFF' }} navigation={navigation}>Editar Informações</TitleWithBackButton>
+            <TitleWithBackButton style={localStyles.colorOverride} navigation={navigation}>Editar Informações</TitleWithBackButton>
 
             <Image source={require('../assets/parentPfp.webp')} style={localStyles.profilePicture} />
 
-            <Card gap={10} style={{ paddingTop: 20 }}>
+            <Card gap={10} style={localStyles.cardUnderPicture}>
                 <CardElement gap={15}>
                     <RoundInput label='Nome Completo:' placeholder='Alexia Martins Castro' value='Alexia Martins Castro' editable={false} />
                     <RoundInput label='Email:' placeholder='alexia.martins@gmail.com' value='alexia.martins@gmail.com' />
                 </CardElement>
             </Card>
 
-            <Card label='Informações Adicionais' gap={10}>
+            <Card label='Informações adicionais' gap={10}>
                 <CardElement gap={15}>
                     <RoundInput label='CPF:' placeholder='123.456.789-09' value='123.456.789-09' editable={false} />
                     <RoundInput label='Endereço:' placeholder='Rua A, 123 , Jardim ABC - FV/SP' value='Rua A, 123 , Jardim ABC - FV/SP' />
@@ -47,4 +47,10 @@ const localStyles = StyleSheet.create({
         borderWidth: 5,
         borderColor: '#fee971',
     },
+    cardUnderPicture: {
+        paddingTop: 20
+    },
+    colorOverride: {
+        color: 'white'
+    }
 });

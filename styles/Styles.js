@@ -4,7 +4,11 @@ import globalColors from './Colors'
 export const globalStyleVariables = {
     screenMargin: 20,
     itemPadding: 17.5,
-    accentWeight: 700
+    accentWeight: 700,
+    title: 30,
+    header: 24,
+    text: 16,
+    subtext: 14
 }
 
 export default (force = '') => {
@@ -12,33 +16,32 @@ export default (force = '') => {
         // text
         title: {
             color: globalColors(force).text,
-            fontSize: 30,
-            fontWeight: globalStyleVariables.accentWeight,
+            fontSize: globalStyleVariables.title,
+            fontWeight: globalStyleVariables.accentWeight
         },
         header: {
             color: globalColors(force).text,
-            fontSize: 24,
+            fontSize: globalStyleVariables.header
         },
         text: {
             color: globalColors(force).text,
-            fontSize: 16
+            fontSize: globalStyleVariables.text
         },
         subtext: {
             color: globalColors(force).subtext,
-            fontSize: 14
+            fontSize: globalStyleVariables.subtext
         },
         accentedText: {
             fontWeight: globalStyleVariables.accentWeight
         },
         textHorizontalMargins: {
-            marginLeft: globalStyleVariables.screenMargin,
-            marginRight: globalStyleVariables.screenMargin
+            marginHorizontal: globalStyleVariables.screenMargin
         },
 
         // interface
         scrollArea: {
             flex: 1,
-            padding: globalStyleVariables.screenMargin,
+            padding: globalStyleVariables.screenMargin
         },
         staticArea: {
             flex: 1,
@@ -52,21 +55,20 @@ export default (force = '') => {
         input: {
             placeholderTextColor: globalColors(force).subtext,
             color: globalColors(force).text,
-            fontSize: 16
+            fontSize: globalStyleVariables.text
         },
         roundInput: {
-            fontSize: 16,
+            fontSize: globalStyleVariables.text,
             borderColor: globalColors(force).divider,
             borderWidth: 1,
             borderRadius: 30,
             height: 50,
-            paddingHorizontal: 15,
+            paddingHorizontal: 15
         },
         divider: {
             marginTop: 0,
             marginBottom: 0,
-            marginLeft: globalStyleVariables.itemPadding,
-            marginRight: globalStyleVariables.itemPadding,
+            marginHorizontal: globalStyleVariables.itemPadding,
             borderColor: globalColors(force).divider,
             borderBottomWidth: 1
         },
@@ -102,18 +104,15 @@ export default (force = '') => {
             minHeight: 45
         },
         card_element: {
-            paddingTop: globalStyleVariables.itemPadding,
-            paddingBottom: globalStyleVariables.itemPadding,
-            paddingLeft: globalStyleVariables.itemPadding,
-            paddingRight: globalStyleVariables.itemPadding
+            padding: globalStyleVariables.itemPadding
         },
 
         // buttons
         smallButton: {
             color: globalColors(force).accent,
             alignSelf: 'flex-start',
-            fontSize: 16,
-            fontWeight: globalStyleVariables.accentWeight,
+            fontSize: globalStyleVariables.text,
+            fontWeight: globalStyleVariables.accentWeight
         },
         bigButton: {
             backgroundColor: globalColors(force).buttonText,
@@ -126,14 +125,14 @@ export default (force = '') => {
             paddingTop: 15,
             paddingBottom: 15,
             paddingLeft: 10,
-            paddingRight: 10,
+            paddingRight: 10
         },
         slimButton: {
             backgroundColor: globalColors(force).buttonText,
             alignItems: 'center',
             justifyContent: 'center',
             height: 35,
-            borderRadius: 30,
+            borderRadius: 30
         },
         backButton: {
             backgroundColor: globalColors(force).foreground,
@@ -154,7 +153,7 @@ export default (force = '') => {
             minHeight: 0,
             padding: 2.5,
             width: 45,
-            height: 23,
+            height: 23
         },
         toggleButton: {
             width: 18,

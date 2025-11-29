@@ -23,11 +23,11 @@ export default ({ navigation }) => {
                 </GradientCard>
             </Section>
 
-            <GradientCard style={{ height: '100%' }}>
+            <GradientCard>
 
                 <CardElement>
-                    <Section centerVertical style={{ alignItems: 'center' }}>
-                        <Text accented style={{ color: 'white' }}>
+                    <Section centerVertical>
+                        <Text accented style={localStyles.colorOverride}>
                             Tamanho da Fonte
                         </Text>
                     </Section>
@@ -38,21 +38,21 @@ export default ({ navigation }) => {
                     </Section>
                 </CardElement>
 
-                <Divider style={{ borderColor: '#ffffff60' }} />
+                <Divider style={localStyles.customDivider} />
 
                 <CardElement>
                     <Section horizontal spaceBetween centerVertical>
-                        <Text style={{ color: 'white' }}>Leitor de Tela</Text>
+                        <Text accented style={localStyles.colorOverride}>Leitor de Tela</Text>
 
                         <AccentToggle value={getScreenReader} onValueChange={() => setScreenReader(!getScreenReader)} />
                     </Section>
                 </CardElement>
 
-                <Divider style={{ borderColor: '#ffffff60' }} />
+                <Divider style={localStyles.customDivider} />
 
                 <CardElement>
                     <Section horizontal spaceBetween centerVertical>
-                        <Text style={{ color: 'white' }}>Contraste</Text>
+                        <Text accented style={localStyles.colorOverride}>Contraste</Text>
 
                         <AccentToggle value={getContrast} onValueChange={() => setContrast(!getContrast)} />
                     </Section>
@@ -68,7 +68,11 @@ const localStyles = StyleSheet.create({
     textSizeLine: {
         flex: 1,
         borderColor: '#ffffff80',
-        borderBottomWidth: 2
+        borderBottomWidth: 2,
+        marginHorizontal: 0
+    },
+    customDivider: {
+        borderColor: '#ffffff60'
     },
     accessibilityIcon: {
         width: 120,
@@ -78,5 +82,8 @@ const localStyles = StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'center',
         marginVertical: 10
+    },
+    colorOverride: {
+        color: 'white'
     }
 })
