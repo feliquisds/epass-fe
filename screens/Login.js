@@ -1,4 +1,6 @@
 import { useState } from 'react'
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+// import { login as apiLogin } from '../services/auth';
 import { Image, ActivityIndicator, StyleSheet } from 'react-native';
 import { Title } from '../components/Texts';
 import { Card, CardElement } from '../components/Cards';
@@ -6,15 +8,9 @@ import { BigSimpleButton, SmallSimpleButton } from '../components/Buttons';
 import { Divider, GradientScreen, Input } from '../components/Interface';
 import { Section } from '../components/Alignments';
 import { globalStyleVariables } from '../styles/Styles';
-import colors from '../styles/Colors';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { login as apiLogin } from '../services/auth';
+import globalColors from '../styles/Colors';
 
-function timeout(delay) {
-    return new Promise(res => setTimeout(res, delay));
-}
-
-// async function processLogin(navigation, activity, email, pass) {
+// async function handleLogin(navigation, activity, email, pass) {
 //     activity(true);
 //     try {
 //         const data = await apiLogin(email, pass);
@@ -41,11 +37,13 @@ function timeout(delay) {
 //     }
 // }
 
-async function processLogin(navigation, activity, email, pass) {
+function timeout(delay) {
+    return new Promise(res => setTimeout(res, delay));
+}
+
+async function handleLogin(navigation, activity, email, pass) {
     activity(true)
     await timeout(1000)
-
-    // if (email == 'admin' && pass == 'admin') navigation.navigate('Tabs')
 
     navigation.navigate('Tabs')
     activity(false)
@@ -55,35 +53,36 @@ export default ({ navigation }) => {
     const [showActivityIndicator, changeShowActivityIndicator] = useState(false)
     const [getEmail, setEmail] = useState('')
     const [getPass, setPass] = useState('')
+    const activityIndicator = <ActivityIndicator color={globalColors('light').accent[0]} style={{ backgroundColor: '' }} />
 
     return (
-        <GradientScreen fill={true}>
-            <Image style={localStyle.logo} source={require('../assets/logo.png')} />
+        <GradientScreen fill>
+            <Image style={localStyles.logo} source={require('../assets/logo.png')} />
 
-            <Section spaceBetween={true}>
+            <Section spaceBetween>
                 <Section gap={15}>
-                    <Title style={{ color: colors('light').foreground }}>Acesse sua conta</Title>
+                    <Title style={{ color: globalColors('light').foreground }}>Acesse sua conta</Title>
 
-                    <Card style={{ backgroundColor: colors('light').foreground }}>
+                    <Card style={{ backgroundColor: globalColors('light').foreground }}>
                         <CardElement>
                             <Input
-                                style={{ color: colors('light').text }}
+                                style={{ color: globalColors('light').text }}
                                 placeholder="Email"
-                                placeholderTextColor={colors('light').subtext}
+                                placeholderTextColor={globalColors('light').subtext}
                                 value={getEmail}
                                 onChangeText={(value) => setEmail(value)}
-                                autoCapitalize="none" // Recomendado para emails
-                                keyboardType="email-address" // Abre o teclado com @
+                                autoCapitalize="none"
+                                keyboardType="email-address"
                             />
                         </CardElement>
 
-                        <Divider style={{ borderColor: colors('light').divider }} />
+                        <Divider style={{ borderColor: globalColors('light').divider }} />
 
                         <CardElement>
                             <Input
-                                style={{ color: colors('light').text }}
+                                style={{ color: globalColors('light').text }}
                                 placeholder="Senha"
-                                placeholderTextColor={colors('light').subtext}
+                                placeholderTextColor={globalColors('light').subtext}
                                 secureTextEntry={true}
                                 value={getPass}
                                 onChangeText={(value) => setPass(value)}
@@ -91,13 +90,13 @@ export default ({ navigation }) => {
                         </CardElement>
                     </Card>
 
-                    <SmallSimpleButton style={{ color: colors('light').foreground, marginHorizontal: globalStyleVariables.screenMargin }} onPress={() => navigation.navigate('Recovery')}>
+                    <SmallSimpleButton style={{ color: globalColors('light').foreground, marginHorizontal: globalStyleVariables.screenMargin }} onPress={() => navigation.navigate('Recovery')}>
                         Esqueci a senha
                     </SmallSimpleButton>
                 </Section>
 
-                <BigSimpleButton onPress={() => processLogin(navigation, changeShowActivityIndicator, getEmail, getPass)}>
-                    {showActivityIndicator ? <ActivityIndicator color={colors('light').accent[0]} style={{ backgroundColor: '' }} /> : 'Entrar'}
+                <BigSimpleButton onPress={() => handleLogin(navigation, changeShowActivityIndicator, getEmail, getPass)}>
+                    {showActivityIndicator ? activityIndicator : 'Entrar'}
                 </BigSimpleButton>
 
             </Section>
@@ -105,7 +104,7 @@ export default ({ navigation }) => {
     );
 }
 
-const localStyle = StyleSheet.create({
+const localStyles = StyleSheet.create({
     logo: {
         marginTop: 25,
         marginBottom: 35,

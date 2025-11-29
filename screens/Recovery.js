@@ -23,11 +23,11 @@ export default ({ navigation }) => {
     const [getEmail, setEmail] = useState('')
 
     return (
-        <SimpleScreen fill={true}>
+        <SimpleScreen fill>
 
             <TitleWithBackButton navigation={navigation}>Recuperar acesso</TitleWithBackButton>
 
-            <Section spaceBetween={true}>
+            <Section spaceBetween>
                 <Card>
                     <Section>
                         <CardElement gap={10}>

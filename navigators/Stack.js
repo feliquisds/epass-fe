@@ -8,8 +8,9 @@ import Login from '../screens/Login'
 import Tabs from "./Tabs"
 import Recovery from "../screens/Recovery"
 import EditProfile from "../screens/EditProfile";
-import BankStatement from "../screens/BankStatement";
+import ViewStatement from "../screens/ViewStatement";
 import AddCredit from "../screens/AddCredit";
+import Accessibility from "../screens/Accessibility";
 
 const Stack = createStackNavigator()
 
@@ -22,43 +23,20 @@ export default () => {
                 <StatusBar barStyle={theme == 'dark' ? 'light-content' : 'dark-content'} />
                 <NavigationContainer>
                     <Stack.Navigator initialRouteName="Login" screenOptions={{
-                        headerShown: false
+                        headerShown: false,
+                        animation: 'slide_from_right'
                     }}>
-                        <Stack.Screen
-                            name="Login"
-                            component={Login}
-                        />
-                        <Stack.Screen
-                            name="Recovery"
-                            component={Recovery}
-                            options={{
-                                animation: 'slide_from_right'
-                            }} />
-                        <Stack.Screen
-                            name="Tabs"
-                            component={Tabs}
+                        <Stack.Screen name="Tabs" component={Tabs}
                             options={{
                                 animation: 'slide_from_bottom'
-                            }} />
-                        <Stack.Screen
-                            name="EditProfile"
-                            component={EditProfile}
-                            options={{
-                                animation: 'slide_from_right'
-                            }} />
-                        <Stack.Screen
-                            name="BankStatement"
-                            component={BankStatement}
-                            options={{
-                                animation: 'slide_from_right'
-                            }} />
-                        <Stack.Screen
-                            name="AddCredit"
-                            component={AddCredit}
-                            options={{
-                                animation: 'slide_from_right'
-                            }} />
-                            
+                            }}
+                        />
+                        <Stack.Screen name="Login" component={Login} />
+                        <Stack.Screen name="Recovery" component={Recovery} />
+                        <Stack.Screen name="EditProfile" component={EditProfile} />
+                        <Stack.Screen name="ViewStatement" component={ViewStatement} />
+                        <Stack.Screen name="AddCredit" component={AddCredit} />
+                        <Stack.Screen name="Accessibility" component={Accessibility} />
                     </Stack.Navigator>
                 </NavigationContainer>
             </SafeAreaView>

@@ -1,9 +1,8 @@
-import { View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Subtext } from './Texts';
 import { getGap, Section } from './Alignments';
 import globalStyles from "../styles/Styles";
-import colors from '../styles/Colors';
+import globalColors from '../styles/Colors';
 
 export const Card = ({ children, style, subtitleStyle, gap, label }) => {
     return (
@@ -16,7 +15,9 @@ export const Card = ({ children, style, subtitleStyle, gap, label }) => {
     )
 }
 
-export const GradientCard = ({ children, style, gradient = colors().accent, gap, start, end }) => {
+export const GradientCard = ({ children, style, gradient = null, gap, start, end }) => {
+    const defaultGradient = globalColors().accent
+    gradient = gradient == null ? defaultGradient : gradient
     return (
         <LinearGradient style={[globalStyles().card, style, getGap(gap)]} colors={gradient} start={start} end={end}>
             {children}

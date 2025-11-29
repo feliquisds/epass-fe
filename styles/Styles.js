@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native"
-import colors from './Colors'
+import globalColors from './Colors'
 
 export const globalStyleVariables = {
     screenMargin: 20,
@@ -11,20 +11,20 @@ export default (force = "") => {
     return StyleSheet.create({
         // text
         title: {
-            color: colors(force).text,
+            color: globalColors(force).text,
             fontSize: 30,
             fontWeight: globalStyleVariables.accentWeight,
         },
         header: {
-            color: colors(force).text,
+            color: globalColors(force).text,
             fontSize: 24,
         },
         text: {
-            color: colors(force).text,
+            color: globalColors(force).text,
             fontSize: 16
         },
         subtext: {
-            color: colors(force).subtext,
+            color: globalColors(force).subtext,
             fontSize: 14
         },
         accentedText: {
@@ -42,21 +42,21 @@ export default (force = "") => {
         },
         staticArea: {
             flex: 1,
-            backgroundColor: colors(force).background
+            backgroundColor: globalColors(force).background
         },
         screen: {
             flex: 1,
             padding: globalStyleVariables.screenMargin,
-            backgroundColor: colors(force).background
+            backgroundColor: globalColors(force).background
         },
         input: {
-            placeholderTextColor: colors(force).subtext,
-            color: colors(force).text,
+            placeholderTextColor: globalColors(force).subtext,
+            color: globalColors(force).text,
             fontSize: 16
         },
         roundInput: {
             fontSize: 16,
-            borderColor: colors(force).divider,
+            borderColor: globalColors(force).divider,
             borderWidth: 1,
             borderRadius: 30,
             height: 50,
@@ -67,15 +67,38 @@ export default (force = "") => {
             marginBottom: 0,
             marginLeft: globalStyleVariables.itemPadding,
             marginRight: globalStyleVariables.itemPadding,
-            borderColor: colors(force).divider,
+            borderColor: globalColors(force).divider,
             borderBottomWidth: 1
+        },
+
+        // tab bar
+        tabBar: {
+            height: 66,
+            bottom: globalStyleVariables.screenMargin,
+            marginHorizontal: globalStyleVariables.screenMargin,
+            left: 0,
+            right: 0,
+            position: 'absolute',
+            borderRadius: 50,
+            alignItems: 'center',
+            backgroundColor: globalColors(force).navigation,
+            gap: 3
+        },
+        tabBarEntry: {
+            height: '100%',
+            flex: 1,
+            padding: 5,
+            borderRadius: 50,
+            backgroundColor: globalColors(force).navigation,
+            alignItems: 'center',
+            justifyContent: 'center'
         },
 
         // cards
         card: {
             padding: 0,
             borderRadius: 30,
-            backgroundColor: colors(force).foreground,
+            backgroundColor: globalColors(force).foreground,
             minHeight: 45
         },
         card_element: {
@@ -87,13 +110,13 @@ export default (force = "") => {
 
         // buttons
         smallButton: {
-            color: colors(force).accent,
+            color: globalColors(force).accent,
             alignSelf: 'flex-start',
             fontSize: 16,
             fontWeight: globalStyleVariables.accentWeight,
         },
         bigButton: {
-            backgroundColor: colors(force).buttonText,
+            backgroundColor: globalColors(force).buttonText,
             alignSelf: 'center',
             alignItems: 'center',
             justifyContent: 'center',
@@ -106,14 +129,14 @@ export default (force = "") => {
             paddingRight: 10,
         },
         slimButton: {
-            backgroundColor: colors(force).buttonText,
+            backgroundColor: globalColors(force).buttonText,
             alignItems: 'center',
             justifyContent: 'center',
             height: 35,
             borderRadius: 30,
         },
         backButton: {
-            backgroundColor: colors(force).foreground,
+            backgroundColor: globalColors(force).foreground,
             width: 40,
             height: 40,
             borderRadius: 100,
@@ -122,8 +145,22 @@ export default (force = "") => {
             paddingTop: 11
         },
         backButtonIcon: {
-            color: colors(force).text,
+            color: globalColors(force).text,
             fontSize: 18
+        },
+
+        // toggles
+        toggle: {
+            minHeight: 0,
+            padding: 2.5,
+            width: 45,
+            height: 23,
+        },
+        toggleButton: {
+            width: 18,
+            height: 18,
+            borderRadius: 100,
+            backgroundColor: 'white'
         },
 
         // alignment

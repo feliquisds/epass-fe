@@ -9,13 +9,17 @@ export function getGap(gap) {
 }
 
 export const Section = ({ children, gap, spaceBetween, horizontal, centerVertical, alignRight, style }) => {
+    const spaceBetweenStyle = globalStyles().space_between
+    const horizontalStyle = globalStyles().horizontal
+    const centerVerticalStyle = globalStyles().centerVertical
+    const alignRightStyle = globalStyles().alignRight
     return (
         <View style={[
             getGap(gap),
-            spaceBetween ? globalStyles().space_between : {},
-            horizontal ? globalStyles().horizontal : {},
-            centerVertical ? globalStyles().centerVertical : {},
-            alignRight ? globalStyles().alignRight : {},
+            spaceBetween ? spaceBetweenStyle : {},
+            horizontal ? horizontalStyle : {},
+            centerVertical ? centerVerticalStyle : {},
+            alignRight ? alignRightStyle : {},
             style
         ]}>{children}</View>
     )

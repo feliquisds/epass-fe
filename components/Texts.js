@@ -3,7 +3,7 @@ import { GradientText as ReactGradientText } from 'universal-gradient-text'
 import { BackButton } from './Buttons';
 import { Section } from './Alignments';
 import globalStyles from "../styles/Styles";
-import colors from '../styles/Colors';
+import globalColors from '../styles/Colors';
 
 export const Title = ({ children, style }) => {
     return (
@@ -13,7 +13,7 @@ export const Title = ({ children, style }) => {
 
 export const TitleWithBackButton = ({ children, style, navigation }) => {
     return (
-        <Section horizontal={true} gap={10}>
+        <Section horizontal gap={10}>
             <BackButton navigation={navigation} />
             <ReactText style={[globalStyles().title, style]}>{children}</ReactText>
         </Section>
@@ -21,11 +21,12 @@ export const TitleWithBackButton = ({ children, style, navigation }) => {
 }
 
 export const Header = ({ children, style, accented, centerVertical, alignRight }) => {
+    const accentedStyle = globalStyles().accentedText
     return (
         <ReactText style={[
             globalStyles().header,
             style,
-            accented ? globalStyles().accentedText : {},
+            accented ? accentedStyle : {},
             centerVertical ? { textAlignVertical: 'center' } : {},
             alignRight ? { textAlign: 'right' } : {}
         ]}>{children}</ReactText>
@@ -33,11 +34,12 @@ export const Header = ({ children, style, accented, centerVertical, alignRight }
 }
 
 export const Text = ({ children, style, accented, centerVertical, alignRight }) => {
+    const accentedStyle = globalStyles().accentedText
     return (
         <ReactText style={[
             globalStyles().text,
             style,
-            accented ? globalStyles().accentedText : {},
+            accented ? accentedStyle : {},
             centerVertical ? { textAlignVertical: 'center' } : {},
             alignRight ? { textAlign: 'right' } : {}
         ]}>{children}</ReactText>
@@ -45,47 +47,57 @@ export const Text = ({ children, style, accented, centerVertical, alignRight }) 
 }
 
 export const Subtext = ({ children, style, accented, centerVertical, alignRight }) => {
+    const accentedStyle = globalStyles().accentedText
     return (
         <ReactText style={[
             globalStyles().subtext,
             style,
-            accented ? globalStyles().accentedText : {},
+            accented ? accentedStyle : {},
             centerVertical ? { textAlignVertical: 'center' } : {},
             alignRight ? { textAlign: 'right' } : {}
         ]}>{children}</ReactText>
     )
 }
 
-export const GradientHeader = ({ children, gradient = colors().accent, style, accented, centerVertical, alignRight }) => {
+export const GradientHeader = ({ children, gradient = null, style, accented, centerVertical, alignRight }) => {
+    const accentedStyle = globalStyles().accentedText
+    const defaultGradient = globalColors().accent
+    gradient = gradient == null ? defaultGradient : gradient
     return (
         <ReactGradientText style={[
             globalStyles().header,
             style,
-            accented ? globalStyles().accentedText : {},
+            accented ? accentedStyle : {},
             centerVertical ? { textAlignVertical: 'center' } : {},
             alignRight ? { textAlign: 'right' } : {}
         ]} colors={gradient}>{children}</ReactGradientText>
     )
 }
 
-export const GradientText = ({ children, gradient = colors().accent, style, accented, centerVertical, alignRight }) => {
+export const GradientText = ({ children, gradient = null, style, accented, centerVertical, alignRight }) => {
+    const accentedStyle = globalStyles().accentedText
+    const defaultGradient = globalColors().accent
+    gradient = gradient == null ? defaultGradient : gradient
     return (
         <ReactGradientText style={[
             globalStyles().text,
             style,
-            accented ? globalStyles().accentedText : {},
+            accented ? accentedStyle : {},
             centerVertical ? { textAlignVertical: 'center' } : {},
             alignRight ? { textAlign: 'right' } : {}
         ]} colors={gradient}>{children}</ReactGradientText>
     )
 }
 
-export const GradientSubtext = ({ children, gradient = colors().accent, style, accented, centerVertical, alignRight }) => {
+export const GradientSubtext = ({ children, gradient = null, style, accented, centerVertical, alignRight }) => {
+    const accentedStyle = globalStyles().accentedText
+    const defaultGradient = globalColors().accent
+    gradient = gradient == null ? defaultGradient : gradient
     return (
         <ReactGradientText style={[
             globalStyles().subtext,
             style,
-            accented ? globalStyles().accentedText : {},
+            accented ? accentedStyle : {},
             centerVertical ? { textAlignVertical: 'center' } : {},
             alignRight ? { textAlign: 'right' } : {}
         ]} colors={gradient}>{children}</ReactGradientText>

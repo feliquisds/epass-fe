@@ -1,84 +1,82 @@
 import { TitleWithBackButton, Header, Subtext } from '../components/Texts';
-import { RoundInput, SimpleScreen, Input, Divider } from '../components/Interface';
-import React, { useState, useEffect } from "react";
-
-import { Image, StyleSheet, Alert, Text } from 'react-native';
+import { SimpleScreen, Input, Divider } from '../components/Interface';
+import { useState, useEffect } from "react";
+import { StyleSheet } from 'react-native';
 import { Card, CardElement } from '../components/Cards';
-import { BigAccentButton, SmallSimpleButton, SlimSimpleButton } from '../components/Buttons';
+import { SlimAccentButton } from '../components/Buttons';
+import { Section } from '../components/Alignments';
 
 export default ({ navigation }) => {
-    const [carteira, setCarteira] = useState({ saldo: 0 });
+    const [getCarteira, setCarteira] = useState({ saldo: 0 });
 
-    useEffect(() => {
-        async function fetchData() {
-        try {
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         try {
+    //             const data = await getCarteira();
+    //             setCarteira(data);
+    //         } catch (error) {
+    //             console.error("Falha ao carregar a carteira", error);
+    //             setCarteira({ saldo: 0 });
+    //         }
+    //     }
 
-            const data = await getCarteira(); 
-            setCarteira(data);
-        } catch (error) {
-            // Lidar com o erro
-            console.error("Falha ao carregar a carteira", error);
-            setCarteira({ saldo: 0 });
-        } 
-        }
+    //     fetchData();
+    // }, []);
 
-        fetchData();
-    }, []);
-
-    const saldoAtual = carteira.valorDisponivel;
     return (
-        <SimpleScreen tabScreen={true}>
-            <TitleWithBackButton style={{ color: 'fff' }} navigation={navigation}>Adicionar Crédito</TitleWithBackButton>
+        <SimpleScreen>
+            <TitleWithBackButton navigation={navigation}>
+                Adicionar Crédito
+            </TitleWithBackButton>
 
             <Card>
-                <CardElement >
-                    <Header style={{ color: '#fff' }}>Quanto quer adicionar?</Header>
-                    <Subtext style={{ color: 'gray' }} accented={true}>Crédito disponivel: R${Number(saldoAtual || 0).toFixed(2)}</Subtext>
-                    <Input style={{ fontSize: '25' }} label="Email:" placeholder="R$ 0,00"  />
-                    <Divider/>
-                    
+                <CardElement gap={15}>
+                    <Section>
+                        <Header>Quanto quer adicionar?</Header>
+                        <Subtext>Crédito disponivel: R${Number(getCarteira.saldo || 0).toFixed(2)}</Subtext>
+                    </Section>
+                    <Section horizontal gap={10}>
+                        <Header>R$</Header>
+                        <Input style={{ fontSize: 24 }} placeholder={"0.00"} />
+                    </Section>
+                </CardElement>
+                <Divider />
+                <CardElement>
+                    <Subtext>Mínimo para adicionar: R$ 5,00</Subtext>
                 </CardElement>
             </Card>
 
             <Card>
-                <CardElement >
-                    <Header style={{ color: '#fff' }}>Como quer adicionar?</Header>
-                </CardElement>
                 <CardElement>
-                    <SlimSimpleButton>Pix</SlimSimpleButton>
-                    <SlimSimpleButton>Crédito</SlimSimpleButton>
-                    <SlimSimpleButton>Débito</SlimSimpleButton>
+                    <Header>Como quer adicionar?</Header>
+                </CardElement>
+                <CardElement gap={5}>
+                    <SlimAccentButton>Pix</SlimAccentButton>
+                    <SlimAccentButton>Crédito</SlimAccentButton>
+                    <SlimAccentButton>Débito</SlimAccentButton>
                 </CardElement>
             </Card>
 
             <Card>
-                <CardElement >
-                    <Header style={{ color: '#fff' }}>Informações do cartão</Header>
+                <CardElement>
+                    <Header>Informações do cartão</Header>
                 </CardElement>
                 <CardElement>
-                    <Input style={localStyle.Input} label=":" placeholder="Nome do cartão"  />
-                    <Input style={localStyle.Input} label=":" placeholder="Número"  />
-                    <Input style={localStyle.Input} label=":" placeholder="Validade"  />
-                    <Input style={localStyle.Input} label=":" placeholder="CVC"  />
-
+                    <Input placeholder="Nome no cartão" />
+                </CardElement>
+                <Divider />
+                <CardElement>
+                    <Input placeholder="Número" />
+                </CardElement>
+                <Divider />
+                <CardElement>
+                    <Input placeholder="Validade" />
+                </CardElement>
+                <Divider />
+                <CardElement>
+                    <Input placeholder="CVC" />
                 </CardElement>
             </Card>
         </SimpleScreen>
     );
 };
-
-const localStyle = StyleSheet.create({
-
-    pfp: {
-        height: 70,
-        width: 70,
-        resizeMode: 'contain'
-    },
-    Input: {
-          
-        borderBottomColor: '#DFDFEC',
-        borderBottomWidth: 1,
-        marginVertical: 10
-  
-    }
-});

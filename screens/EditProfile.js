@@ -10,10 +10,10 @@ export default ({ navigation }) => {
     };
 
     return (
-        <ImageScreen tabScreen={true}>
+        <ImageScreen tabScreen>
             <TitleWithBackButton style={{ color: '#FFF' }} navigation={navigation}>Editar Informações</TitleWithBackButton>
 
-            <Image source={require('../assets/parentPfp.webp')} style={localStyle.profilePicture} />
+            <Image source={require('../assets/parentPfp.webp')} style={localStyles.profilePicture} />
 
             <Card gap={10} style={{ paddingTop: 20 }}>
                 <CardElement gap={15}>
@@ -26,7 +26,7 @@ export default ({ navigation }) => {
                 <CardElement gap={15}>
                     <RoundInput label="CPF:" placeholder="123.456.789-09" value="123.456.789-09" editable={false} />
                     <RoundInput label="Endereço:" placeholder="Rua A, 123 , Jardim ABC - FV/SP" value="Rua A, 123 , Jardim ABC - FV/SP" />
-                    <RoundInput label="Telefone:" placeholder="11 99999-9999" value="11 99999-9999" editable={true} />
+                    <RoundInput label="Telefone:" placeholder="11 99999-9999" value="11 99999-9999" editable />
                     <RoundInput label="Filhos(as):" placeholder="Gabriela Martins" value="Gabriela Martins" editable={false} />
                 </CardElement>
             </Card>
@@ -36,7 +36,7 @@ export default ({ navigation }) => {
     );
 };
 
-const localStyle = StyleSheet.create({
+const localStyles = StyleSheet.create({
     profilePicture: {
         alignSelf: 'center',
         marginBottom: -45,

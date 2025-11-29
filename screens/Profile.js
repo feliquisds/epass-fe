@@ -1,26 +1,50 @@
-import { Header, Subtext, Title } from '../components/Texts';
+import { Header, Subtext, Title, Text } from '../components/Texts';
 import { SimpleScreen, Divider } from '../components/Interface';
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, useColorScheme } from 'react-native';
 import { Card, CardElement } from '../components/Cards';
 import { SmallSimpleButton } from '../components/Buttons';
 import { Section } from '../components/Alignments';
+import { AccentToggle } from '../components/Toggles';
+import { useState, useEffect } from 'react';
 
 function handleLogout(navigation) {
     navigation.replace('Login');
 }
 
-function editProfile(navigation) {
+function goToEditProfile(navigation) {
     navigation.navigate('EditProfile');
 }
 
-export default ({ navigation }) => {
+function goToAccessibility(navigation) {
+    navigation.navigate('Accessibility');
+}
+
+export default function Profile({ navigation }) {
+    const colorScheme = useColorScheme();
+    const [getCurrentTheme, setCurrentTheme] = useState(colorScheme.toString == 'dark' ? 'dark' : 'light');
+
+    useEffect(() => {
+        setCurrentTheme(colorScheme.toString());
+    }, [colorScheme]);
+
+    function changeTheme(isDarkMode) {
+        if (isDarkMode) {
+            setCurrentTheme('dark')
+            console.log("modo escuro ativado")
+        }
+        else {
+            setCurrentTheme('light')
+            console.log("modo escuro desativado")
+        }
+    }
+
     return (
-        <SimpleScreen tabScreen={true}>
+        <SimpleScreen tabScreen>
             <Title>Perfil</Title>
 
             <Card>
-                <CardElement horizontal={true} gap={15}>
-                    <Image source={require('../assets/parentPfp.webp')} style={localStyle.profilePicture} />
+                <CardElement horizontal gap={15}>
+                    <Image source={require('../assets/parentPfp.webp')} style={localStyles.profilePicture} />
                     <Section style={{ alignSelf: 'center' }}>
                         <Header>Alexia Martins</Header>
                         <Subtext>Responsável</Subtext>
@@ -28,7 +52,7 @@ export default ({ navigation }) => {
                 </CardElement>
                 <Divider />
                 <CardElement>
-                    <SmallSimpleButton onPress={() => editProfile(navigation)}>Editar informações</SmallSimpleButton>
+                    <SmallSimpleButton onPress={() => goToEditProfile(navigation)}>Editar informações</SmallSimpleButton>
                 </CardElement>
                 <Divider />
                 <CardElement>
@@ -38,18 +62,23 @@ export default ({ navigation }) => {
 
             <Card>
                 <CardElement>
-                    <SmallSimpleButton>Acessibilidade</SmallSimpleButton>
+                    <SmallSimpleButton onPress={() => goToAccessibility(navigation)}>Acessibilidade</SmallSimpleButton>
+                </CardElement>
+                <Divider />
+                <CardElement horizontal spaceBetween>
+                    <Text accented>Modo escuro</Text>
+                    <AccentToggle value={getCurrentTheme === 'dark'} onValueChange={changeTheme} />
                 </CardElement>
                 <Divider />
                 <CardElement>
-                    <SmallSimpleButton style={{ color: "#FF002F", textAlign: 'center' }} onPress={() => handleLogout(navigation)}>Sair</SmallSimpleButton>
+                    <SmallSimpleButton style={{ color: localColors.logout, textAlign: 'center' }} onPress={() => handleLogout(navigation)}>Sair</SmallSimpleButton>
                 </CardElement>
             </Card>
         </SimpleScreen>
     );
 };
 
-const localStyle = StyleSheet.create({
+const localStyles = StyleSheet.create({
     profilePicture: {
         zIndex: 1,
         height: 90,
@@ -59,3 +88,7 @@ const localStyle = StyleSheet.create({
         borderColor: '#FF5B8F',
     },
 });
+
+const localColors = {
+    logout: "#FF002F"
+}

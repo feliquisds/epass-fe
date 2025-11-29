@@ -5,7 +5,7 @@ import { Card, CardElement, GradientCard } from '../components/Cards';
 import { SlimSimpleButton, SmallAccentButton } from '../components/Buttons';
 import { Section } from '../components/Alignments';
 
-const notes = [
+const DATA = [
     { id: '1', title: 'Multiplicação', date: '10 de set.', score: '5,00', subject: 'Matemática' },
     { id: '2', title: 'História do Brasil', date: '9 de set.', score: '8,00', subject: 'História' },
     { id: '3', title: 'Verbos', date: '8 de set.', score: '9,00', subject: 'Português' },
@@ -13,12 +13,12 @@ const notes = [
 
 export default () => {
     const renderNote = ({ item }) => (
-        <CardElement horizontal={true} spaceBetween={true} centerVertical={true}>
+        <CardElement horizontal spaceBetween centerVertical>
             <Section>
                 <Text>{item.title}</Text>
                 <Subtext>{item.date}</Subtext>
             </Section>
-            <Section alignRight={true}>
+            <Section alignRight>
                 <Header>{item.score}</Header>
                 <Subtext>{item.subject}</Subtext>
             </Section>
@@ -26,7 +26,7 @@ export default () => {
     );
 
     return (
-        <SimpleScreen tabScreen={true}>
+        <SimpleScreen tabScreen>
             <Title>Relatórios</Title>
 
             <GradientCard gradient={['#4c8dff', '#1e66ff']}>
@@ -41,7 +41,7 @@ export default () => {
 
             <Card label={'Notas'}>
                 <FlatList
-                    data={notes}
+                    data={DATA}
                     keyExtractor={(i) => i.id}
                     renderItem={renderNote}
                     ItemSeparatorComponent={<Divider />}

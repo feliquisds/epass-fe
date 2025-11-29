@@ -28,9 +28,9 @@ const darkColors = {
 }
 
 export default function (force = "") {
+    const theme = useColorScheme()
     if (force == "light") return lightColors
     if (force == "dark") return darkColors
-    const theme = useColorScheme()
     return {
         background: theme == 'dark' ? darkColors.background : lightColors.background,
         text: theme == 'dark' ? darkColors.text : lightColors.text,

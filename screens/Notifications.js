@@ -4,32 +4,32 @@ import { Card, GradientCard, CardElement } from "../components/Cards";
 import { Text, Subtext, Title } from "../components/Texts";
 import { MaterialIcons, Entypo, Octicons } from "@expo/vector-icons";
 import { SimpleScreen } from "../components/Interface";
-import colors from "../styles/Colors";
+import globalColors from "../styles/Colors";
 
 const DATA = [
     {
-        id: "1",
+        id: 1,
         title: "Atividades extraclasse",
         subtitle: "Vivências culturais",
         author: "Professora Gisele",
         type: "info",
     },
     {
-        id: "2",
+        id: 2,
         title: "Regularização dos uniformes",
         subtitle: "",
         author: "Administração acadêmica",
         type: "warning",
     },
     {
-        id: "3",
+        id: 3,
         title: "Ciclos de atividades não entregues",
         subtitle: "Matemática",
         author: "Professora Márcia",
         type: "info",
     },
     {
-        id: "4",
+        id: 4,
         title: "Conversas paralelas",
         subtitle: "Geografia",
         author: "Professora Suelen",
@@ -61,9 +61,9 @@ function Badge({ type }) {
 function AvisoCard({ item }) {
     const gradient =
         item.type === "warning"
-            ? [colors().foreground, "#FFB300"]
+            ? [globalColors().foreground, "#FFB300"]
             : item.type === "danger"
-                ? [colors().foreground, "#E53935"]
+                ? [globalColors().foreground, "#E53935"]
                 : null;
 
     const Wrapper = gradient ? GradientCard : Card;
@@ -74,10 +74,10 @@ function AvisoCard({ item }) {
                 <Section horizontal centerVertical spaceBetween>
 
                     <Section style={{ flex: 1 }} gap={5}>
-                        <Text accented={true}>{item.title}</Text>
+                        <Text accented>{item.title}</Text>
 
                         <Section>
-                            {item.subtitle && <Subtext style={{ color: colors().text }}>{item.subtitle}</Subtext>}
+                            {item.subtitle && <Subtext style={{ color: globalColors().text }}>{item.subtitle}</Subtext>}
                             <Subtext>{item.author}</Subtext>
                         </Section>
 
@@ -93,7 +93,7 @@ function AvisoCard({ item }) {
 
 export default () => {
     return (
-        <SimpleScreen tabScreen={true}>
+        <SimpleScreen tabScreen>
             <Section gap={15}>
                 <Title>Avisos</Title>
 
