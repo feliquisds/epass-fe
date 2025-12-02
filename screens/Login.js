@@ -1,6 +1,7 @@
 import { useState } from 'react'
-// import AsyncStorage from '@react-native-async-storage/async-storage';
-// import { login as apiLogin } from '../services/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import AuthService from '../services/AuthService';
+import AlunoService from '../services/AlunoService';
 import { Image, ActivityIndicator, StyleSheet } from 'react-native';
 import { Title } from '../components/Texts';
 import { Card, CardElement } from '../components/Cards';
@@ -10,46 +11,53 @@ import { Section } from '../components/Alignments';
 import { globalStyleVariables } from '../styles/Styles';
 import globalColors from '../styles/Colors';
 
-// async function handleLogin(navigation, activity, email, pass) {
-//     activity(true);
-//     try {
-//         const data = await apiLogin(email, pass);
+async function handleLogin(navigation, activity, email, pass) {
+    activity(true);
+    try {
+        const authService = new AuthService();
+        const alunoService = new AlunoService();
 
-//         // 1. Salva token localmente
-//         await AsyncStorage.setItem('token', data.token);
+        const data = await authService.login(email, pass);
+        await AsyncStorage.setItem('token', data.token);
+        
+        const alunos = await alunoService.getAlunosByResponsavelId(data.id);
 
-//         // 2. NOVO: Salva o nome do responsável localmente
-//         if (data.nome) {
-//             await AsyncStorage.setItem('user_name', data.nome);
-//         }
+        await AsyncStorage.setItem('tipoUsuario', data.tipoUsuario);
+        await AsyncStorage.setItem('id', String(data.id));
+        await AsyncStorage.setItem('qtdAlunos', alunos.length.toString());
+        await AsyncStorage.setItem('alunoAtual', alunos[0]?.id.toString() || '');
 
-//         if (data.id) {
-//             await AsyncStorage.setItem('user_id', String(data.id));
-//         }
+        navigation.navigate('Tabs');
 
-//         // navega para Tabs
-//         navigation.navigate('Tabs');
+    } catch (err) {
+        alert(err.message);
+    } finally {
+        activity(false);
+    }
+}
 
-//     } catch (err) {
-//         alert(err.message);
-//     } finally {
-//         activity(false);
-//     }
+async function handleAutoLogin(navigation) {
+    const token = await AsyncStorage.getItem('token');
+    if (token) {
+        navigation.replace('Tabs');
+    }
+}
+
+// function timeout(delay) {
+//     return new Promise(res => setTimeout(res, delay));
 // }
 
-function timeout(delay) {
-    return new Promise(res => setTimeout(res, delay));
-}
+// async function handleLogin(navigation, activity, email, pass) {
+//     activity(true)
+//     await timeout(1000)
 
-async function handleLogin(navigation, activity, email, pass) {
-    activity(true)
-    await timeout(1000)
-
-    navigation.replace('Tabs')
-    activity(false)
-}
+//     navigation.replace('Tabs')
+//     activity(false)
+// }
 
 export default ({ navigation }) => {
+    handleAutoLogin(navigation);
+
     const [showActivityIndicator, changeShowActivityIndicator] = useState(false)
     const [getEmail, setEmail] = useState('')
     const [getPass, setPass] = useState('')

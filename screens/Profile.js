@@ -1,3 +1,5 @@
+import ProfileService from '../services/ProfileService';
+import AuthService from '../services/AuthService';
 import { Header, Subtext, Title, Text } from '../components/Texts';
 import { SimpleScreen, Divider } from '../components/Interface';
 import { Image, StyleSheet, useColorScheme } from 'react-native';
@@ -8,6 +10,8 @@ import { AccentToggle } from '../components/Toggles';
 import { useState, useEffect } from 'react';
 
 function handleLogout(navigation) {
+    const authService = new AuthService();
+    authService.logout();
     navigation.replace('Login');
 }
 
@@ -20,6 +24,7 @@ function goToAccessibility(navigation) {
 }
 
 export default function Profile({ navigation }) {
+    const [nome, setNome] = useState('Carregando...');
     const colorScheme = useColorScheme();
     const [getCurrentTheme, setCurrentTheme] = useState(colorScheme.toString == 'dark' ? 'dark' : 'light');
 
@@ -38,6 +43,20 @@ export default function Profile({ navigation }) {
         }
     }
 
+    async function loadName() {
+        try {
+            const profileService = new ProfileService();
+            const profile = await profileService.getProfile();
+            setNome(profile.nome);
+        } catch (error) {
+            console.error('Erro ao carregar perfil: ', error);
+        }
+    }
+
+    useEffect(() => {
+        loadName();
+    }, []);
+
     return (
         <SimpleScreen tabScreen>
             <Title>Perfil</Title>
@@ -46,7 +65,7 @@ export default function Profile({ navigation }) {
                 <CardElement horizontal gap={15}>
                     <Image source={require('../assets/parentPfp.webp')} style={localStyles.profilePicture} />
                     <Section style={{ alignSelf: 'center' }}>
-                        <Header>Alexia Martins</Header>
+                        <Header>{nome}</Header>
                         <Subtext>Responsável</Subtext>
                     </Section>
                 </CardElement>

@@ -1,6 +1,6 @@
-// import { useState, useEffect } from 'react';
-// import { getEvent } from '../services/evento';
-// import { getCarteira } from '../services/carteira';
+import { useState, useEffect } from 'react';
+import EventoService from '../services/EventoService';
+import CarteiraService from '../services/CarteiraService';
 import { Image, StyleSheet, FlatList } from 'react-native';
 import { SlimSimpleButton, SmallAccentButton } from '../components/Buttons';
 import { Card, CardElement, GradientCard } from '../components/Cards';
@@ -8,11 +8,11 @@ import { Section } from '../components/Alignments';
 import { Header, Subtext, Text, Title } from '../components/Texts';
 import { Divider, SimpleScreen } from '../components/Interface';
 
-const DATA = [
-    { id: 1, titulo: 'Excursão', dataInicio: 'Em 3 dias', categoria: 'Escola' },
-    { id: 2, titulo: 'Reunião de pais', dataInicio: 'Em 5 dias', categoria: 'Escola' },
-    { id: 3, titulo: 'Prova', dataInicio: 'Em 7 dias', categoria: 'Matemática' }
-]
+// const DATA = [
+//     { id: 1, titulo: 'Excursão', dataInicio: 'Em 3 dias', categoria: 'Escola' },
+//     { id: 2, titulo: 'Reunião de pais', dataInicio: 'Em 5 dias', categoria: 'Escola' },
+//     { id: 3, titulo: 'Prova', dataInicio: 'Em 7 dias', categoria: 'Matemática' }
+// ]
 
 function goToViewStatement(navigation) {
     navigation.navigate('ViewStatement');
@@ -27,32 +27,34 @@ function goToQRCode(navigation) {
 }
 
 export default ({ navigation }) => {
-    // const [eventos, setEventos] = useState([]);
-    // const [carteira, setCarteira] = useState({ saldo: 0 });
+    const [eventos, setEventos] = useState([]);
+    const [carteira, setCarteira] = useState({ saldo: null });
 
-    // async function fetchData() {
-    //     try {
-    //         const data = await getCarteira();
-    //         setCarteira(data);
-    //     } catch (error) {
-    //         console.error('Falha ao carregar a carteira', error);
-    //         setCarteira({ saldo: 0 });
-    //     }
-    // }
+    async function fetchCarteira() {
+        try {
+            const carteiraService = new CarteiraService();
+            const data = await carteiraService.getCarteira();
+            if (data != null) setCarteira({ saldo: data.valorDisponivel });
+            else setCarteira(null);
+        } catch (error) {
+            console.error('Falha ao carregar a carteira: ', error);
+        }
+    }
 
-    // async function loadEvent() {
-    //     try {
-    //         const lista = await getEvent();
-    //         setEventos(lista || []);
-    //     } catch (error) {
-    //         console.error('Erro ao carregar eventos:', error);
-    //     }
-    // }
+    async function fetchEventos() {
+        try {
+            const eventoService = new EventoService();
+            const lista = await eventoService.getEventos();
+            setEventos(lista || []);
+        } catch (error) {
+            console.error('Erro ao carregar eventos:', error);
+        }
+    }
 
-    // useEffect(() => {
-    //     loadEvent();
-    //     fetchData();
-    // }, []);
+    useEffect(() => {
+        fetchEventos();
+        fetchCarteira();
+    }, []);
 
     const renderEvent = ({ item }) => (
         <CardElement horizontal spaceBetween centerVertical>
@@ -82,7 +84,7 @@ export default ({ navigation }) => {
 
             <Card label={'Eventos'}>
                 <FlatList
-                    data={DATA}
+                    data={eventos}
                     keyExtractor={(i) => i.id}
                     renderItem={renderEvent}
                     ItemSeparatorComponent={<Divider />}
@@ -96,26 +98,27 @@ export default ({ navigation }) => {
 
             </Card>
 
+            {
+                carteira != null &&
+                <Card label={'Crédito da pulseira'}>
+                    <CardElement>
+                        <Text>Crédito disponível</Text>
+                        <Text accented>R$ {Number(carteira.saldo || 0).toFixed(2)}</Text>
+                    </CardElement>
 
-            <Card label={'Crédito da pulseira'}>
-                <CardElement>
-                    <Text>Crédito disponível</Text>
-                    {/* <Text accented>R$ {Number(carteira.saldo || 0).toFixed(2)}</Text> */}
-                    <Text accented>R$ {Number(0).toFixed(2)}</Text>
-                </CardElement>
+                    <Divider />
 
-                <Divider />
+                    <CardElement>
+                        <SmallAccentButton onPress={() => goToViewStatement(navigation)}>Visualizar extrato</SmallAccentButton>
+                    </CardElement>
 
-                <CardElement>
-                    <SmallAccentButton onPress={() => goToViewStatement(navigation)}>Visualizar extrato</SmallAccentButton>
-                </CardElement>
+                    <Divider />
 
-                <Divider />
-
-                <CardElement>
-                    <SmallAccentButton onPress={() => goToAddCredit(navigation)}>Adicionar crédito</SmallAccentButton>
-                </CardElement>
-            </Card>
+                    <CardElement>
+                        <SmallAccentButton onPress={() => goToAddCredit(navigation)}>Adicionar crédito</SmallAccentButton>
+                    </CardElement>
+                </Card>
+            }
 
         </SimpleScreen>
     );
